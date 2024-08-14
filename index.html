@@ -63,7 +63,7 @@
 								<p>Add some details about this like perhaps where it occurred and why ?</p>
 							</article>
 							<article class="col-6 col-12-xsmall work-item">
-								<a href="https://www.youtube.com/watch?v=4EqRmH82WbM" data-videostart="10" class="timage fit thumb popup-youtube">
+								<a href="https://www.youtube.com/watch?v=4EqRmH82WbM" class="timage fit thumb popup-youtube">
 									<img class="thumbpic" src="images/thumbs/QuantoEBella.JPG" alt="Geoffrey Gear sings Quanto E Bella live opera singing video" />
 								</a>
 								<h3>Quanto E Bella</h3>
@@ -489,15 +489,11 @@ $(document).ready(function() {
         type: 'iframe',
 		 iframe: {
                 patterns: {
-					index: 'youtube.com/',
-                            id: 'v=',
-                            src: function(url) {
-                                // Extract video ID from URL
-                                var videoId = url.split('v=')[1].split('&')[0];
-                                // Get the start time from the data attribute
-                                var startTime = $(this).data('videostart') || 0;
-                                return 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&start=' + startTime;
-                            }
+                    youtube: {
+                        index: 'youtube.com/', 
+                        id: 'v=', 
+                        src: 'https://www.youtube.com/embed/%id%?autoplay=1' 
+                    }
                 }
             }
     });
