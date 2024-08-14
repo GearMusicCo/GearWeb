@@ -7,6 +7,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+
 	</head>
 	<body class="is-preload">
 
@@ -54,7 +56,9 @@
 						<h2>My Recent Work</h2>
 						<div class="row">
 							<article class="col-6 col-12-xsmall work-item">
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/vof-yaHX5fY?si=BHfbvfHrP9E6_ypz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+								<a href="https://www.youtube.com/watch?v=vof-yaHX5fY" class="fit thumb popup-youtube">
+									<img src="images/thumbs/03.jpg" alt="Thumbnail for Video 1" />
+								</a>
 								<h3>Video 1</h3>
 								<p>I Did Video 1 at this location</p>
 							</article>
@@ -471,6 +475,27 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+<!-- Include Magnific Popup JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    
 
+<!-- Initialize Magnific Popup -->
+<script>
+$(document).ready(function() {
+    $('.popup-youtube').magnificPopup({
+        type: 'iframe',
+		 iframe: {
+                patterns: {
+                    youtube: {
+                        index: 'youtube.com/', 
+                        id: 'v=', 
+                        src: 'https://www.youtube.com/embed/%id%?autoplay=1' 
+                    }
+                }
+            }
+    });
+});
+</script>
 	</body>
 </html>
