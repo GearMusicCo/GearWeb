@@ -56,14 +56,14 @@
 						<h2>My Recent Work</h2>
 						<div class="row">
 							<article class="col-6 col-12-xsmall work-item">
-								<a href="https://www.youtube.com/watch?v=vof-yaHX5fY" class="timage fit thumb popup-youtube">
+								<a href="https://www.youtube.com/watch?v=vof-yaHX5fY"  class="timage fit thumb popup-youtube">
 								<img class="thumbpic" src="images/thumbs/HateMeThumb.JPG" alt="Geoffrey Gear sings I know that you all hate me the saint of bleeker live opera singing video " />
 								</a>
 								<h3>I Know That You All Hate Me</h3>
-								<p>Add some details about this like perhaps where it occurred and why ? </p>
+								<p>Add some details about this like perhaps where it occurred and why ?</p>
 							</article>
 							<article class="col-6 col-12-xsmall work-item">
-								<a href="https://www.youtube.com/watch?v=4EqRmH82WbM&t=5s" class="timage fit thumb popup-youtube">
+								<a href="https://www.youtube.com/watch?v=4EqRmH82WbM" data-videostart="10" class="timage fit thumb popup-youtube">
 									<img class="thumbpic" src="images/thumbs/QuantoEBella.JPG" alt="Geoffrey Gear sings Quanto E Bella live opera singing video" />
 								</a>
 								<h3>Quanto E Bella</h3>
@@ -489,11 +489,15 @@ $(document).ready(function() {
         type: 'iframe',
 		 iframe: {
                 patterns: {
-                    youtube: {
-                        index: 'youtube.com/', 
-                        id: 'v=', 
-                        src: 'https://www.youtube.com/embed/%id%?autoplay=1' 
-                    }
+					index: 'youtube.com/',
+                            id: 'v=',
+                            src: function(url) {
+                                // Extract video ID from URL
+                                var videoId = url.split('v=')[1].split('&')[0];
+                                // Get the start time from the data attribute
+                                var startTime = $(this).data('videostart') || 0;
+                                return 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&start=' + startTime;
+                            }
                 }
             }
     });
