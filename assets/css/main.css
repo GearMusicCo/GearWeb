@@ -2223,7 +2223,12 @@ input, select, textarea {
 		.timage.fit img {
 			width: 100%;
 		}
-			
+		
+		
+		.thumbpic{
+			width: 500px;
+			height: 200px;
+		}
 /* List */
 
 	ol {
