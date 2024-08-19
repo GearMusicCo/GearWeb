@@ -93,12 +93,12 @@
 						</p>
 						<div class="row">
 							<div class="col-8 col-12-small">
-								<form method="post" action="https://formsubmit.co/omegacreationsshop@email.com">
+								<form method="post" action="https://formsubmit.co/omegacreationsshop@gmail.com">
 									<div class="row gtr-uniform gtr-50">
 										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" required/></div>
 										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" required/></div>
 										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4" required></textarea></div>
-										<input hidden name="_next">
+										<input type="hidden" name="_next" id="nextPage" value="~/thankyou.html">
 										<input type="hidden" name="_subject" value="Submission from website - New Contact or Inquiry">
 
 
@@ -502,6 +502,14 @@ $(document).ready(function() {
             }
     });
 });
+</script>
+<script>
+    // Get the current domain
+    const currentDomain = window.location.origin;
+
+    // Select the input and replace the "~" with the actual domain
+    const nextPageInput = document.getElementById('nextPage');
+    nextPageInput.value = nextPageInput.value.replace('~', currentDomain);
 </script>
 	</body>
 </html>
