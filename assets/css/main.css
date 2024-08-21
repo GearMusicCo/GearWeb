@@ -2321,6 +2321,83 @@ input, select, textarea {
 				top: 0;
 				width: 1em;
 			}
+/*services section - the tiles that show what services are offered*/
+/* General styles for the section */
+.services-section {
+    padding: 2em;
+    text-align: center;
+
+}
+
+.services-title {
+    font-size: 2em;
+	margin: 0; 
+    padding-top: 0; 
+    margin-bottom: 1em;
+}
+
+/* Container for tiles */
+.tiles {
+    display: flex;
+    justify-content: space-between; 
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+/* Tile styles */
+.tile {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1; 
+    max-width: 30%;
+}
+
+/* Adjust tile styles for smaller screens */
+.tile-header {
+    margin: 0 0 0.5em;
+    font-size: 1.5em;
+}
+
+.tile-subtitle {
+    color: #666;
+}
+
+/* Hover effect */
+.tile:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .services-title {
+        font-size: 1.5em;
+    }
+
+    .tiles {
+        flex-direction: column; /* Stack tiles vertically */
+        align-items: center; /* Center align tiles */
+    }
+
+    .tile {
+        max-width: 100%; /* Full width on small screens */
+        margin-bottom: 1em; /* Add margin between stacked tiles */
+    }
+}
+
+@media (max-width: 480px) {
+    .services-title {
+        font-size: 1.2em; /* Smaller font size for very small screens */
+    }
+
+    .tile-header {
+        font-size: 1.2em; /* Adjust header font size */
+    }
+}
 
 /* Actions */
 
