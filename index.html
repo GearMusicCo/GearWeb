@@ -90,26 +90,30 @@
 						<h1 class="services-title"><strong>Services I Offer</strong></h2>
 						<h3 class="">Please note prices are approximate and vary depending on time and availability</h2>
 						<div class="tiles">
-							<div class="tile" data-service="Weddings">
-								<h3 class="tile-header">Weddings</h3>
-								<p class="tile-subtitle">Make your special day unforgettable with live music tailored to your love story.
-														 From ceremony to reception, I provide the perfect soundtrack for every moment.
-														</p>
+							<div class="tile" data-service="Private Lessons">
+								<h3 class="tile-header">Private Lessons</h3>
+								<p class="tile-subtitle">Discover your musical talent with personalized, one-on-one lessons. I offer instruction for all levels, helping you achieve your musical goals with expert guidance.</p>
+							</div>
+							<div class="tile" data-service="Weddings" 
+								data-removefields="isparent" 
+								data-desc="Thanks for considering me to potenitally take part in your special day.
+										Please provide your name and a good contact email and phone number so I can get back to you regarding availability.">
+									<h3 class="tile-header">Weddings</h3>
+									<p class="tile-subtitle">Make your special day unforgettable with live music tailored to your love story.
+															From ceremony to reception, I provide the perfect soundtrack for every moment.
+															</p>
 							  </div>
-							  <div class="tile" data-service="Sacred (Church Work)">
-								<h3 class="tile-header">Sacred (Church Work)</h3>
+							  <div class="tile" data-service="Worship">
+								<h3 class="tile-header">Worship</h3>
 								<p class="tile-subtitle">Enhance your worship services with inspiring music. I offer professional performances for church events, bringing a touch of reverence and beauty to your sacred occasions.</p>
 							  </div>
 							  <div class="tile" data-service="Corprate Events">
 								<h3 class="tile-header">Corporate Events</h3>
 								<p class="tile-subtitle">Impress your guests with sophisticated live music at your next corporate event. Whether it’s a gala, conference, or company celebration, I create an atmosphere that elevates your brand.</p>
 							  </div>
-							  <div class="tile" data-service="Private Lessons">
-								<h3 class="tile-header">Private Lessons</h3>
-								<p class="tile-subtitle">Discover your musical talent with personalized, one-on-one lessons. I offer instruction for all levels, helping you achieve your musical goals with expert guidance.</p>
-							  </div>
+							  
 							  <div class="tile" data-service="Retirement Homes">
-								<h3 class="tile-header">Retirement Homes</h3>
+								<h3 class="tile-header">Retirement Communities</h3>
 								<p class="tile-subtitle">Bring joy to your community with live music tailored for retirement homes. I provide engaging performances that uplift and entertain residents with timeless tunes.</p>
 							  </div>
 						<!--	  <div class="tile" data-service="Skibbity toilet rizz package">
@@ -223,6 +227,20 @@
 
 <script>
 
+let originalFormHTML = document.querySelector('#modalContactForm').outerHTML;
+function removeFieldById(elIdStr) {
+	if(!elIdStr || elIdStr == ""){
+		return;
+	}
+	
+	const element = document.getElementById("#"+elementId);
+    if (element) {
+       element.remove();
+	} else {
+      console.log(`Element with ID "${elementId}" not found.`);
+    }
+}
+
 // Get modal element
 var modal = document.getElementById("contactModal");
 // Get close button
@@ -235,16 +253,33 @@ var tiles = document.getElementsByClassName("tile");
 Array.from(tiles).forEach(function(tile) {
   tile.addEventListener("click", function() {
     var service = this.getAttribute("data-service");
+    var removeFields = this.getAttribute("data-removefields");
+    var modalDesc = this.getAttribute("data-desc");
+    var modalSubj = this.getAttribute("data-subj");
 
+	const tileEl = document.querySelector('[data-service="'+ service +'"]');
 
+	
+	if (removeFields != null && removeFields.trim() !== '') {
+		var fieldsArray = removeFields.split(',').map(function(value) {
+			return value.trim(); // Remove any extra whitespace from each value
+    	});
+		fieldsArray.forEach(f => removeFieldById(f));
+
+	} 
     // Update modal content based on the clicked tile
-    document.getElementById("modalDescription").innerText = `Thanks for considering the ${service} teaching package. Please provide your name and a good contact email and phone number so I can get back to you regarding availability.`;
+	modalSubj =  tileEl.getElementById("tile-subtitle");
     document.getElementById("modalSubject").value = `Submission from website - Inquiry about ${service}`;
+
 
     // Show the modal
     modal.style.display = "block";
   });
 });
+
+function handleDynamicForm (){
+
+}
 
 // Listen for close click
 closeBtn.addEventListener("click", function() {
@@ -257,6 +292,8 @@ window.addEventListener("click", function(event) {
     modal.style.display = "none";
   }
 });
+
+
 
 </script>
 
