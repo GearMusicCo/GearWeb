@@ -2321,6 +2321,31 @@ input, select, textarea {
 				top: 0;
 				width: 1em;
 			}
+
+
+			/* Carosel styling for video scroller */
+.slick-prev, .slick-next {
+    color: white; /* White arrow color */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    z-index: 10;
+}
+
+.slick-prev:before, .slick-next:before {
+    font-size: 20px;
+    color: black; /* Ensure the arrow icons are visible */
+}
+/* Adjust positions if needed */
+.slick-prev {
+    left: -45px;
+	top: 40%;
+}
+.slick-next {
+    right: -45px;
+	top: 40%;
+}
+
 /*services section - the tiles that show what services are offered*/
 /* General styles for the section */
 .services-section {

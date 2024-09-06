@@ -9,7 +9,9 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+		
 	</head>
 	<body class="is-preload">
 
@@ -18,15 +20,18 @@
 				<div class="inner">
 					<a href="#" class="image avatar" style="width:250px;"><img src="images/avatar2-edit.jpg" alt="" /></a>
 					<h1>
-						<strong style="font-size: 48px;">Geoffrey Gear</strong>
-						<strong style="font-size:50px; font-weight: 1000;"><br/> Buckeye Guy Music</strong>
+						<strong style="font-size: 48px; font-weight: 1000;">Geoffrey Gear</strong>
 					</h1>
+					<strong style="font-size: 25px; font-weight: 800;"><br/>SINGER | TEACHER | VOCOLOGIST</strong>
 					<div style="color: white; font-weight: 600;">
 						<i>
 							<br />Where teaching meets performance.
 							<br />Igniting passion and fostering the stars of tomorrow.
 						</i>	
 					</div>
+					<ul id="aboutmecontainer" class="actions" >
+						<li><a id="abtMeBtn" href="#four"  class="button" style="color: white;">About Me</a></li>
+					</ul>
 				</div>
 			</header>
 
@@ -55,10 +60,10 @@
 				<!-- Two -->
 					<section id="two">
 						<h1 class="section-title">My Recent Work</h2>
-						<div class="row">
+						<div class="slider row" style="margin: 0em 1em 1.5em 1em; text-align: center;">
 							<article class="col-6 col-12-xsmall work-item">
 								<a href="https://www.youtube.com/watch?v=vof-yaHX5fY"  class="timage fit thumb popup-youtube">
-								<img class="thumbpic" src="images/thumbs/HateMeThumb.JPG" alt="Geoffrey Gear sings I know that you all hate me the saint of bleeker live opera singing video " />
+									<img class="thumbpic" src="images/thumbs/HateMeThumb.JPG" alt="Geoffrey Gear sings I know that you all hate me the saint of bleeker live opera singing video " />
 								</a>
 								<h3>I Know That You All Hate Me</h3>
 								<p>Add some details about this like perhaps where it occurred and why ?</p>
@@ -71,17 +76,18 @@
 								<p>Add some details about this </p>
 							</article>
 							<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/05.jpg" class="image fit thumb"><img src="images/thumbs/05.jpg" alt="" /></a>
-								<h3>Video 3</h3>
+								<a href="https://www.youtube.com/watch?v=DwpUNiEbX3E" class="timage fit thumb popup-youtube">
+									<img class="thumbpic" src ="images/thumbs/QuandoTi.jpg" alt="" /></a>
+								<h3>Quando ti rivedrò</h3>
 								<p>I Did Video 3 at this location</p>
 							</article>
-							<article class="col-6 col-12-xsmall work-item">
+						<!--	<article class="col-6 col-12-xsmall work-item">
 								<a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/06.jpg" alt="" /></a>
 								<h3>Video 4</h3>
 								<p>I Did Video 4 at this location</p>
-							</article>
+							</article>-->
 						</div>
-						<ul class="actions" style="justify-content: center;">
+						<ul class="actions" style="justify-content: center; margin-bottom: -20px;">
 							<li><a href="#" class="button">Full Portfolio</a></li>
 						</ul>
 					</section>
@@ -136,8 +142,27 @@
 					</section>
 					
 
-				<!-- four -->
-					<section id="four">
+					<section id="four" class="">
+						<h1 class="section-title" >About Me</h1>
+						Geoffrey is a seasoned tenor with decades of experience across various musical genres including opera, musical theatre, jazz, and contemporary music. 
+						Native to Columbus, Ohio, Geoffrey's love for music began in the early 2010's while performing tenor for Hillard Highschools choir. {{correct?}}
+						He then carried on his passion to Otterbein University in Westerville, Ohio, where he completed his Bachelor's degree in Music {{correct?}} 
+						where he learned to play piano and began teaching his own students. {{correct?}}
+						Currently he is attending The Ohio State University in Columbus Ohio where he is pursuing his Master's in music.
+
+						<br/><br/> As a voice teacher, Geoffrey offers a wealth of knowledge and experience in a wide array of vocal styles.
+						He is well-versed in modern musical theatre and belt techniques, as well as classical and jazz methods. 
+						His teaching philosophy centers on providing individually curated lessons, designed to help each student unlock their full potential and bring their unique voice to life.
+						Geoffrey’s ability to connect with students of all levels, combined with his deep understanding of vocal technique, makes him an ideal mentor for anyone looking to elevate their singing. 
+						Whether you're aiming to refine your classical technique, master the nuances of jazz, or develop a powerful belt for musical theatre, Geoffrey’s personalized approach ensures that your lessons will be tailored to your specific goals and aspirations.
+						In addition to his teaching, Geoffrey is an exceptional choice for live performances at weddings, corporate events, and other special occasions. 
+						His rich, expressive voice and dynamic stage presence guarantee an unforgettable experience for your guests, bringing any event to life with the perfect musical touch.
+						Book Geoffrey for your next event or take your singing to the next level with lessons that inspire and empower. 
+					</section>
+
+
+				<!-- five -->
+					<section id="five">
 						<h1 class="section-title">Get In Touch</h2>
 						<p>
 							I am open to new bookings for music lessons. Please feel free to reach out below to set up some lessons open to all ages. 
@@ -237,85 +262,47 @@
 	</div>
   </div>
 
+<style>
 
+	#abtMeBtn {
+		color: white !important;
+	}
+	header.major {
+		background-image: url('images/gear_choir_solo.jpg');
+		background-size: cover; /* Ensures the image covers the entire header */
+		background-position: center; /* Centers the image within the header */
+		background-repeat: no-repeat; /* Prevents the image from repeating */
+		padding: 40px 20px; /* Adds padding to give space to the text */
+		text-align: center; /* Centers the text */
+		margin: 1em 1.75em 1em 1.75em;
+	}
+	header.major .section-title {
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adds a subtle shadow to make the text stand out */
+		color: white  !important; 
+
+	}
+
+	#aboutmecontainer {
+		float: right;
+		padding-top: 1em;;
+	}
+	@media (min-width: 455px) and (max-width: 775px) {
+		#aboutmecontainer {
+			justify-content: center !important;
+		}
+	}
+	@media (max-width: 768px) {
+		header.major {
+			width: 115%;
+			padding: 20px 10px; /* Adjust padding */
+			margin-left: -1.40em;
+			
+		}
+	}
+</style>
 <script>
 
 let originalFormHTML = document.querySelector('#modalContactForm').outerHTML;
-function removeFieldById(elIdStr) {
-	if(!elIdStr || elIdStr == ""){
-		return;
-	}
-	
-	const element = document.getElementById(elIdStr);
-    if (element) {
-       element.remove();
-	} else {
-      console.log(`Element with ID "${elIdStr}" not found.`);
-    }
-}
-
-function checkTileAndRemoveFields (removeFieldsStr){
-	if (removeFieldsStr != null && removeFieldsStr.trim() !== '') {
-		var fieldsArray = removeFieldsStr.split(',').map(function(value) {
-			return value.trim(); // Remove any extra whitespace from each value
-    	});
-		fieldsArray.forEach(f => removeFieldById(f + "-container"));
-
-	} 
-}
-
-// Get modal element
-var modal = document.getElementById("contactModal");
-// Get close button
-var closeBtn = document.getElementsByClassName("close")[0];
-
-// Get all tiles
-var tiles = document.getElementsByClassName("tile");
-
-// Add click event listeners to each tile
-Array.from(tiles).forEach(function(tile) {
-  tile.addEventListener("click", function() {
-	//reset our dynamic form
-	document.querySelector('#modalContactForm').outerHTML = originalFormHTML;
-
-	//get the tile info that was clicked
-	var service = this.getAttribute("data-service");
-	var tileDesc = this.getElementsByClassName('tile-subtitle')[0].innerText;
-	var tileName =  this.getElementsByClassName('tile-header')[0].innerText;
-	var locPlaceholderToggle =  this.getAttribute("data-tileloc"); 
-    var removeFields = this.getAttribute("data-removefields");
-
-    // Update modal
-	if (removeFields) { checkTileAndRemoveFields(removeFields); }
-	if(locPlaceholderToggle) { document.getElementById("location").setAttribute("placeholder", locPlaceholderToggle); }
-	document.getElementById("modalHeader").innerText = "Thank you for considering me for your " + service;
-	document.getElementById("modalDescription").innerText = tileDesc;
-    document.getElementById("modalSubject").value = `Submission from website - Inquiry about ${tileName}`; //this is for the email subj
-
-	
-
-    // Show the modal
-	var modal = document.getElementById("contactModal");
-    modal.style.display = "block";
-  });
-});
-
-function handleDynamicForm (){
-
-}
-
-// Listen for close click
-closeBtn.addEventListener("click", function() {
-  modal.style.display = "none";
-});
-
-// Listen for outside click
-window.addEventListener("click", function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-});
-
 
 
 </script>
@@ -327,12 +314,13 @@ window.addEventListener("click", function(event) {
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/tileandmodal.js"></script>
+
 
 			<!-- Include Magnific Popup JS -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     
-
 			<!-- Initialize Magnific Popup -->
 			<script>
 			$(document).ready(function() {
@@ -350,7 +338,39 @@ window.addEventListener("click", function(event) {
 				});
 			});
 
+</script>
 
+<!--Include Slick Carousel-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<!--Init click carousel slider w jquery-->
+<script>
+    $(document).ready(function(){
+        $('.slider').slick({
+            slidesToShow: 2,  // Show 2 thumbnails at once
+            slidesToScroll: 1,  // Scroll one at a time
+            autoplay: true,  // Enable autoplay if needed
+            dots: true,  // Show navigation dots
+            arrows: true,  // Show next/previous arrows
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,  // On smaller screens, show one item
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    });
+</script>
+
+
+<script>
+
+
+window.onload = function() {
+	BindServiceTiles();
+};
 //Form submit for <a> tag to play nice w css
 	document.getElementById('submitLink').addEventListener('click', function(e) {
         e.preventDefault(); // Prevent the default anchor behavior
@@ -360,6 +380,13 @@ window.addEventListener("click", function(event) {
         e.preventDefault(); // Prevent the default anchor behavior
 		document.getElementById('modalContactForm').submit(); // Submit the form
     });
+	document.getElementById('abtMeBtn').addEventListener('click', function(event) {
+		event.preventDefault(); // Prevent default anchor click behavior
+		document.getElementById('four').scrollIntoView({ behavior: 'smooth' });
+	});
+
+
+
 </script>
 <script>
     // Get the current domain
@@ -368,6 +395,7 @@ window.addEventListener("click", function(event) {
     // Select the input and replace the "~" with the actual domain
     const nextPageInput = document.getElementById('nextPage');
     nextPageInput.value = nextPageInput.value.replace('~', currentDomain);
+	
 </script>
 </body>
 </html>
