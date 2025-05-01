@@ -3458,3 +3458,44 @@ input, select, textarea {
 	text-shadow: 1px 1px 2px gray;
 	text-align:center;
   }
+
+  /* Tab Container */
+.tabs-container {
+    display: flex;
+    justify-content: left;
+    margin-top: 20px;
+	margin-bottom: -55px;;
+}
+
+/* Style for each tab */
+.tabs {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tabs li {
+    margin-right: 0px;
+}
+
+.tabs a {
+    text-decoration: none;
+    background-color: #524c4c;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+	padding: 10px 30px;  /* Increase the padding to make the tabs bigger */
+    font-size: 18px;  /* Increase the font size */
+	
+}
+
+.tabs a:hover {
+    background-color: #555;
+}
+
+/* Active tab styling */
+.tabs .active a {
+    background-color: #1e90ff;
+}

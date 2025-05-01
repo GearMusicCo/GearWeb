@@ -3,7 +3,7 @@
 -->
 <html>
 	<head>
-		<title>Buckeye Guy Music</title>
+		<title>Geoffrey Gear Music</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -11,18 +11,18 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-		
+		<meta property="og:image" content="images/avatar2-edit.jpg" />
 	</head>
 	<body class="is-preload">
 
-		<!-- Header -->
+		<!-- Header -->	
 			<header id="header">
 				<div class="inner">
 					<a href="#" class="image avatar" style="width:250px;"><img src="images/avatar2-edit.jpg" alt="" /></a>
 					<h1>
 						<strong style="font-size: 48px; font-weight: 1000;">Geoffrey Gear</strong>
 					</h1>
-					<strong style="font-size: 25px; font-weight: 800;"><br/>SINGER | TEACHER | VOCOLOGIST</strong>
+					<strong style="font-size: 25px; font-weight: 800;"><br/>SINGER | TEACHER | COACH</strong>
 					<div style="color: white; font-weight: 600;">
 						<i>
 							<br />Where teaching meets performance.
@@ -35,9 +35,19 @@
 				</div>
 			</header>
 
-		<!-- Main -->
-			<div id="main">
 
+		<!-- Main -->
+		<div id="main" style="margin-top: -100px;">
+		<!-- Tabs Navigation -->
+	<!--	<div class="tabs-container">
+			<ul class="tabs">
+				<li><a href="#home" class="tab-link" data-tab="home">Home</a></li>
+				<li><a href="#about" class="tab-link" data-tab="about">About</a></li>
+				<li><a href="#lessons" class="tab-link" data-tab="contact">Lessons</a></li>
+				<li><a href="#portfolio" class="tab-link" data-tab="portfolio">Portfolio</a></li>
+				<li><a href="#contact" class="tab-link" data-tab="contact">Contact</a></li>
+			</ul>
+		</div>-->
 				<!-- One -->
 					<section id="one">
 						<header class="major">
@@ -228,7 +238,7 @@
 					</li>
 				</ul>
 				<ul class="copyright">
-					<li>&copy; Gear Co</li>
+					<li>&copy; Geoffrey Gear Co</li>
 					<li>Design: <a href="https://omegacreations.co/">OmegaCreations Co</a></li>
 				</ul>
 			</div>
@@ -304,8 +314,48 @@
 <script>
 
 let originalFormHTML = document.querySelector('#modalContactForm').outerHTML;
+// Get all the tab links and content
+const tabLinks = document.querySelectorAll('.tab-link');
+    const tabContents = document.querySelectorAll('.tab-content');
+    const mainContent = document.getElementById('main');
 
-
+    // Loop through each tab link to add event listeners
+//   tabLinks.forEach(link => {
+//        link.addEventListener('click', function(event) {
+//            event.preventDefault(); // Prevent the default link behavior
+//
+//            const tabId = this.getAttribute('data-tab'); // Get the ID of the tab that was clicked
+//
+//            // Hide all tab content sections
+//            tabContents.forEach(content => {
+//                content.classList.remove('active'); // Remove 'active' class from all tab content sections
+//            });
+//
+//            // If the 'Home' tab was clicked, show the 'main' content
+//            if (tabId === 'home') {
+//                mainContent.style.display = 'block'; // Show main content
+//                document.getElementById('about').style.display = 'none'; // Hide the About content
+//                document.getElementById('contact').style.display = 'none'; // Hide the Contact content
+//            } else {
+//                mainContent.style.display = 'none'; // Hide the main content
+//                document.getElementById(tabId).classList.add('active'); // Show the content for About or Contact
+//            }
+//
+//            // Highlight the active tab
+//            tabLinks.forEach(link => {
+//                link.classList.remove('active'); // Remove the 'active' class from all tabs
+//            });
+//
+//            this.classList.add('active'); // Add 'active' class to the clicked tab
+//        });
+//    });
+//
+//    // Initialize: Display the Home tab content by default
+//    document.getElementById('home').classList.add('active');
+//    mainContent.style.display = 'block'; // Show main content by default
+//    document.getElementById('about').style.display = 'none'; // Hide other tabs initially
+//    document.getElementById('contact').style.display = 'none'; 
+//
 </script>
 
 			<!-- Scripts -->
