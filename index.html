@@ -12,6 +12,7 @@
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
 		<meta property="og:image" content="images/avatar2-edit.jpg" />
+	
 	</head>
 	<body class="is-preload">
 
@@ -39,17 +40,18 @@
 		<!-- Main -->
 		<div id="main" style="margin-top: -100px;">
 		<!-- Tabs Navigation -->
-	<!--	<div class="tabs-container">
+		<div class="tabs-container">
 			<ul class="tabs">
-				<li><a href="#home" class="tab-link" data-tab="home">Home</a></li>
+				<li><a href="#home" class="tab-link active" data-tab="home">Home</a></li>
 				<li><a href="#about" class="tab-link" data-tab="about">About</a></li>
-				<li><a href="#lessons" class="tab-link" data-tab="contact">Lessons</a></li>
+				<li><a href="#services" class="tab-link" data-tab="services">Lessons</a></li>
 				<li><a href="#portfolio" class="tab-link" data-tab="portfolio">Portfolio</a></li>
 				<li><a href="#contact" class="tab-link" data-tab="contact">Contact</a></li>
 			</ul>
-		</div>-->
+		</div>
+		<div id="sections-container" style="margin-top: 100px;">
 				<!-- One -->
-					<section id="one">
+					<section id="home" class="active-section">
 						<header class="major">
 							<h2 class="section-title">
 								To play a wrong note is insignificant; 
@@ -68,7 +70,7 @@
 					</section>
 
 				<!-- Two -->
-					<section id="two">
+					<section id="about">
 						<h1 class="section-title">My Recent Work</h2>
 						<div class="slider row" style="margin: 0em 1em 1.5em 1em; text-align: center;">
 							<article class="col-6 col-12-xsmall work-item">
@@ -92,23 +94,18 @@
 								<p>I Did Video 3 at this location</p>
 							</article>
 							<article class="col-6 col-12-xsmall work-item">
-								<a href="https://www.youtube.com/live/pR-UMLaKhyw?si=HO_lFx5JTgBUx8nQ" class="timage fit thumb popup-youtube">
+								<a href="https://www.youtube.com/embed/pR-UMLaKhyw" class="timage fit thumb popup-youtube">
 									<img class="thumbpic" src ="images/thumbs/holiday_jazz_1.png" alt="" /></a>
 								<h3>Jazz Holiday Concert 2024</h3>
 								<p>Performing for THE Ohio State University</p>
 							</article>
-						<!--	<article class="col-6 col-12-xsmall work-item">
-								<a href="images/fulls/06.jpg" class="image fit thumb"><img src="images/thumbs/06.jpg" alt="" /></a>
-								<h3>Video 4</h3>
-								<p>I Did Video 4 at this location</p>
-							</article>-->
 						</div>
 						<ul class="actions" style="justify-content: center; margin-bottom: -20px;">
 							<li><a href="#" class="button">Full Portfolio</a></li>
 						</ul>
 					</section>
 		
-					<section id="three" class="services-section">
+					<section id="services" class="services-section">
 						<h1 class="section-title" >Services</h1>
 						<div class="tiles">
 							<div class="tile" 
@@ -158,7 +155,7 @@
 					</section>
 					
 
-					<section id="four" class="">
+					<section id="about" class="">
 						<h1 class="section-title" >About Me</h1>
 						Geoffrey is a seasoned tenor with decades of experience across various musical genres including opera, musical theatre, jazz, and contemporary music. 
 						Native to Columbus, Ohio, Geoffrey's love for music began in the early 2010's while performing tenor for Hillard Highschools choir. {{correct?}}
@@ -178,7 +175,7 @@
 
 
 				<!-- five -->
-					<section id="five">
+					<section id="contact">
 						<h1 class="section-title">Get In Touch</h2>
 						<p>
 							I am open to new bookings for music lessons. Please feel free to reach out below to set up some lessons open to all ages. 
@@ -219,10 +216,10 @@
 
 	
 			</div>
-
+		</div>
 		<!-- Footer -->
 		<footer id="footer">
-			<div class="inner">
+			<div class="">
 				<ul class="icons fa">
 					<li>
 						<a href="https://musicologielessons.com/profiles/geoffrey-gear/" class="icon brands">
@@ -279,9 +276,15 @@
   </div>
 
 <style>
+  section {
+      display: none;
+    }
 
-	#abtMeBtn {
-		color: white !important;
+    section.active-section {
+      display: block;
+    }
+.tabs a.active {
+      background: #666;
 	}
 	header.major {
 		background-image: url('images/gear_choir_solo.jpg');
@@ -325,43 +328,6 @@ const tabLinks = document.querySelectorAll('.tab-link');
     const tabContents = document.querySelectorAll('.tab-content');
     const mainContent = document.getElementById('main');
 
-    // Loop through each tab link to add event listeners
-//   tabLinks.forEach(link => {
-//        link.addEventListener('click', function(event) {
-//            event.preventDefault(); // Prevent the default link behavior
-//
-//            const tabId = this.getAttribute('data-tab'); // Get the ID of the tab that was clicked
-//
-//            // Hide all tab content sections
-//            tabContents.forEach(content => {
-//                content.classList.remove('active'); // Remove 'active' class from all tab content sections
-//            });
-//
-//            // If the 'Home' tab was clicked, show the 'main' content
-//            if (tabId === 'home') {
-//                mainContent.style.display = 'block'; // Show main content
-//                document.getElementById('about').style.display = 'none'; // Hide the About content
-//                document.getElementById('contact').style.display = 'none'; // Hide the Contact content
-//            } else {
-//                mainContent.style.display = 'none'; // Hide the main content
-//                document.getElementById(tabId).classList.add('active'); // Show the content for About or Contact
-//            }
-//
-//            // Highlight the active tab
-//            tabLinks.forEach(link => {
-//                link.classList.remove('active'); // Remove the 'active' class from all tabs
-//            });
-//
-//            this.classList.add('active'); // Add 'active' class to the clicked tab
-//        });
-//    });
-//
-//    // Initialize: Display the Home tab content by default
-//    document.getElementById('home').classList.add('active');
-//    mainContent.style.display = 'block'; // Show main content by default
-//    document.getElementById('about').style.display = 'none'; // Hide other tabs initially
-//    document.getElementById('contact').style.display = 'none'; 
-//
 </script>
 
 			<!-- Scripts -->
@@ -453,6 +419,31 @@ window.onload = function() {
     const nextPageInput = document.getElementById('nextPage');
     nextPageInput.value = nextPageInput.value.replace('~', currentDomain);
 	
+</script>
+<script>
+	  document.addEventListener("DOMContentLoaded", function () {
+      const tabs = document.querySelectorAll(".tab-link");
+      const sections = document.querySelectorAll("section");
+
+      tabs.forEach(tab => {
+        tab.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const target = this.getAttribute("data-tab");
+
+          // Hide all sections
+          sections.forEach(section => section.classList.remove("active-section"));
+
+          // Show target section
+          const activeSection = document.getElementById(target);
+          if (activeSection) activeSection.classList.add("active-section");
+
+          // Update active tab style
+          tabs.forEach(t => t.classList.remove("active"));
+          this.classList.add("active");
+        });
+      });
+    });
 </script>
 </body>
 </html>
