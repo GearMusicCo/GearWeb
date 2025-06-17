@@ -2786,7 +2786,7 @@ input, select, textarea {
 		color: rgba(255, 255, 255, 0.5);
 		height: 100%;
 		left: 0;
-		padding: 8em 4em;
+		padding: 1em 1em 1em 1em;
 		position: fixed;
 		text-align: right;
 		top: 0;
@@ -2869,8 +2869,8 @@ input, select, textarea {
 
 	#main {
 		margin-left: 35%;
-		max-width: 54em;
-		padding: 8em 1em 4em 4em;
+		max-width: 66em;
+		padding: .5em 1em 2em 1em;
 		width: calc(100% - 35%);
 	}
 
@@ -3214,7 +3214,7 @@ input, select, textarea {
 			#main {
 				margin-left: 30%;
 				max-width: none;
-				padding: 6em 1em 3em 3em;
+				padding: .5em 1em 1em 1em;
 				width: calc(100% - 30%);
 			}
 
@@ -3296,7 +3296,7 @@ input, select, textarea {
 
 			#main {
 				margin: 0;
-				padding: 6em 1em 6em 4em;
+				padding: .5em 1em 1em 1em;
 				width: 100%;
 			}
 
@@ -3359,7 +3359,7 @@ input, select, textarea {
 		/* Main */
 
 			#main {
-				padding: 2.25em 1.5em 0.25em 1.5em;
+				padding: .5em 1.5em 0.25em 1.5em;
 			}
 
 				#main > section {
@@ -3463,39 +3463,46 @@ input, select, textarea {
 .tabs-container {
     display: flex;
     justify-content: left;
-    margin-top: 20px;
-	margin-bottom: -55px;;
+    align-items: center; 
+    height: 50px;
+    background-color: #524c4c;
+    border-radius: 10px;
+	margin: 0px 0px 1em 0px;
 }
-
-/* Style for each tab */
+/* Style for each table holding list of tab */
 .tabs {
     display: flex;
     list-style-type: none;
-    padding: 0;
-    margin: 0;
+    padding: 5px;
+    margin: 0px;
+    height: 100%;
+    overflow-x: auto;
+    width: 100%; /* Ensure it fills the container */
 }
 
 .tabs li {
-    margin-right: 0px;
+    flex: 1 1 0; /* Each li takes equal space */
+    display: flex;
+    justify-content: center; /* Center the link inside */
+    align-items: center;
 }
-
+/*the actual tab*/
 .tabs a {
+    width: 100%; /* Make the link fill the li */
+    text-align: center;
+    margin: 0; /* Remove custom margin */
     text-decoration: none;
     background-color: #524c4c;
     color: white;
     font-weight: bold;
     border-radius: 5px;
     transition: background-color 0.3s;
-	padding: 10px 30px;  /* Increase the padding to make the tabs bigger */
-    font-size: 18px;  /* Increase the font size */
-	
+    padding: 10px 0;  /* Vertical padding only */
+    font-size: 18px;
 }
 
 .tabs a:hover {
     background-color: #555;
 }
 
-/* Active tab styling */
-.tabs .active a {
-    background-color: #1e90ff;
-}
+ 
