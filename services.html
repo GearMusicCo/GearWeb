@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<!--
+-->
+<html>
+	<head>
+		<title>Geoffrey Gear Music</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/mobile_main.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+		
+
+		<meta property="og:image" content="images/geoff_brick.jpg" />
+	
+	</head>
+	<body class="is-preload" style="background-color: #3F3A3A;">
+			<header class="major-mobile">
+					<div class="tabs-container-mobile" style="margin: 15px 0px 0px 15px;">
+						<button class="hamburger" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+						<ul class="tabs">
+							<li><a href="#home" class="tab-link active" data-tab="home">Home</a></li>
+							<li><a href="#about" class="tab-link" data-tab="about">About</a></li>
+							<li><a href="#services" class="tab-link" data-tab="services">Services</a></li>
+							<li><a href="#portfolio" class="tab-link" data-tab="portfolio">Portfolio</a></li>
+							<li><a href="#contact" class="tab-link" data-tab="contact">Contact</a></li>
+						</ul>
+					</div>
+			</header>
+
+
+					
+					<div id="services" class="services-section">
+						<h1 class="section-title" >Services</h1>
+						<div class="tiles">
+							<div class="tile" 
+								data-service="Private Lessons"
+								data-removefields="modalLocInput">
+								<i class="fas fa-music tile-icon"></i>
+								<h3 class="tile-header">Private Lessons</h3>
+								<p class="tile-subtitle">Discover your musical talent with personalized, one-on-one lessons. I offer instruction for all levels, helping you achieve your musical goals with expert guidance.</p>
+							</div>
+
+							<div class="tile" 
+								data-service="Wedding." 
+								data-removefields="isparent" 
+								data-tileloc="Event Location">
+								<i class="fas fa-heart tile-icon"></i>
+								<h3 class="tile-header">Weddings</h3>
+								<p class="tile-subtitle">Make your special day unforgettable with live music tailored to your love story. From ceremony to reception, I provide the perfect soundtrack for every moment.</p>
+							</div>
+
+							<div class="tile" 
+					   	 		 data-service="Worship."
+								 data-tileloc="Church Name"
+								 data-removefields="isparent">
+								<i class="fas fa-church tile-icon"></i>
+								<h3 class="tile-header">Sacred (Church Work)</h3>
+								<p class="tile-subtitle">Enhance your worship services with inspiring music. I offer professional performances for church events, bringing a touch of reverence and beauty to your sacred occasions.</p>
+							</div>
+
+							<div class="tile" 
+								 data-service="Corporate Events."
+								 data-removefields="isparent"
+								 data-tileloc="Event Location">
+								<i class="fas fa-briefcase tile-icon"></i>
+								<h3 class="tile-header">Corporate Events</h3>
+								<p class="tile-subtitle">Impress your guests with sophisticated live music at your next corporate event. Whether it’s a gala, conference, or company celebration, I create an atmosphere that elevates your brand.</p>
+							</div>
+
+							<div class="tile" 
+								 data-service="Retirement Home event."
+								 data-removefields="isparent"
+								 data-tileloc="Event Location">
+								<i class="fas fa-home tile-icon"></i>
+								<h3 class="tile-header">Retirement Homes</h3>
+								<p class="tile-subtitle">Bring joy to your community with live music tailored for retirement homes. I provide engaging performances that uplift and entertain residents with timeless tunes.</p>
+							</div>
+						</div>
+
+					</div>
+					
+
+
+
+
+<!-- Footer -->
+		<footer id="footer">
+			<div class="">
+				<ul class="icons fa">
+					<li>
+						<a href="https://musicologielessons.com/profiles/geoffrey-gear/" class="icon brands">
+							<i class="fas fa-theater-masks"></i>
+							<span class="label">Opera World</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="icon brands">
+							<i class="fab fa-twitter"></i>
+							<span class="label">Twitter</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="icon solid">
+							<i class="fas fa-envelope"></i>
+							<span class="label">Email</span>
+						</a>
+					</li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Geoffrey Gear Co</li>
+					<li>Design: <a href="https://omegacreations.co/">OmegaCreations Co</a></li>
+				</ul>
+			</div>
+		</footer>
+
+
+
+				<!-- Popup Modal -->
+		<div id="contactModal" class="modal">
+			<div class="modal-content">
+			<span class="close">&times;</span>
+			<h2 id="modalHeader"></h2>
+			<p id="modalDescription"></p>
+			<form method="post" action="https://formsubmit.co/gearmusicco@gmail.com" id="modalContactForm">
+				<div class="row gtr-uniform gtr-50">
+					<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" required/></div>
+					<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" required/></div>
+					<div id="modalLocInput-container" class="col-6 col-12-xsmall"><input type="text" name="location" id="location" placeholder="" required/></div>
+					<div class="col-12"><textarea name="message" id="message" placeholder="Additional Info" rows="2"></textarea></div>
+					<div class="col-6" id="isparent-container">
+						<input type="checkbox" id="isparent" name="parent_of_student" value="no" placeholder="I am a parent of a student">
+						<label for="isparent">I am a parent of a student</label>
+					</div>
+					<input type="hidden" name="_next" id="nextPage" value="~/_thankyou.html">
+					<input id="modalSubject" type="hidden" name="_subject" value="Submission from website - New Contact or Inquiry">
+					<input type="hidden" name="_captcha" value="true">
+				</div>
+				<ul class="actions" style="justify-content: center; padding-top: 1em;">
+					<li><a href="#" type="submit" id="submitModalLink" class="button">Send Inquiry</a></li>
+				</ul>
+			</form>	
+			</div>
+		</div>
+
+ <style>
+	.portfolio-mobile{
+		width: 100vw;     /* 100% of the viewport width */
+ 	}.media-section {
+		padding: 1em;
+		text-align: center;
+	}
+
+	/* Title spacing */
+	.media-section h2 {
+		margin-bottom: 1em;
+		color: #fff;
+	}
+
+	/* Grid layout for photos and videos */
+	.media-grid {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1em; /* spacing between items */
+		padding: 0.5em;
+	}
+
+	/* Individual media items */
+	.media-item {
+ 		background-color: #2f2a2a;
+		border-radius: 8px;
+		overflow: hidden;
+		padding: 0.5em;
+		box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+		color: #fff;
+	}
+
+	/* Image and video thumbnails */
+	.media-item img {
+		width: 100%;
+		height: auto;
+		border-radius: 4px;
+		display: block;
+		margin-bottom: 0.5em;
+	}
+
+	/* Text inside media items */
+	.media-item h3 {
+		margin: 0.5em 0 0.2em;
+		font-size: 1.1em;
+	}
+
+	.media-item p {
+		font-size: 0.9em;
+		margin: 0;
+	}
+
+	/* Portfolio section title */
+	.section-title {
+		color: #fff;
+		text-align: center;
+		padding: 1em 0 0.2em;
+		font-size: 2em;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+ <script src="assets/js/hamburger.js"></script>
+ <script src="assets/js/tileandmodal.js"></script>
+
+<script>
+	let originalFormHTML = document.querySelector('#modalContactForm').outerHTML;
+
+window.onload = function() {
+	BindServiceTiles();
+}; 
+ 
+
+</script>
+</body>
+</html>
+
+

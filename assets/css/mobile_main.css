@@ -1,0 +1,11 @@
+ 
+	header.major-mobile {
+		background-image: url('../../images/gear_choir_solo.jpg');
+		background-size: cover; /* Ensures the image covers the entire header */
+		background-position: center; /* Centers the image within the header */
+		background-repeat: no-repeat; /* Prevents the image from repeating */
+		padding: 40px 20px; /* Adds padding to give space to the text */
+		text-align: center; /* Centers the text */
+		margin: 0em .25em 1em .25em;
+	}
+
