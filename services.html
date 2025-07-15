@@ -116,7 +116,36 @@
 				</ul>
 			</div>
 		</footer>
-		
+
+
+
+				<!-- Popup Modal -->
+		<div id="contactModal" class="modal">
+			<div class="modal-content">
+			<span class="close">&times;</span>
+			<h2 id="modalHeader"></h2>
+			<p id="modalDescription"></p>
+			<form method="post" action="https://formsubmit.co/gearmusicco@gmail.com" id="modalContactForm">
+				<div class="row gtr-uniform gtr-50">
+					<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" required/></div>
+					<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" required/></div>
+					<div id="modalLocInput-container" class="col-6 col-12-xsmall"><input type="text" name="location" id="location" placeholder="" required/></div>
+					<div class="col-12"><textarea name="message" id="message" placeholder="Additional Info" rows="2"></textarea></div>
+					<div class="col-6" id="isparent-container">
+						<input type="checkbox" id="isparent" name="parent_of_student" value="no" placeholder="I am a parent of a student">
+						<label for="isparent">I am a parent of a student</label>
+					</div>
+					<input type="hidden" name="_next" id="nextPage" value="~/_thankyou.html">
+					<input id="modalSubject" type="hidden" name="_subject" value="Submission from website - New Contact or Inquiry">
+					<input type="hidden" name="_captcha" value="true">
+				</div>
+				<ul class="actions" style="justify-content: center; padding-top: 1em;">
+					<li><a href="#" type="submit" id="submitModalLink" class="button">Send Inquiry</a></li>
+				</ul>
+			</form>	
+			</div>
+		</div>
+
  <style>
 	.portfolio-mobile{
 		width: 100vw;     /* 100% of the viewport width */
@@ -181,31 +210,15 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
  <script src="assets/js/hamburger.js"></script>
+ <script src="assets/js/tileandmodal.js"></script>
 
 <script>
-$(document).ready(function(){
-    $('.media-grid').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: true,
-        arrows: false,
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 2
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1
-                }
-            }
-        ]
-    });
-});
+	let originalFormHTML = document.querySelector('#modalContactForm').outerHTML;
+
+window.onload = function() {
+	BindServiceTiles();
+}; 
+ 
 
 </script>
 </body>

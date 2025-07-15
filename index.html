@@ -41,7 +41,7 @@
 						</i>	
 					</div>
 					<ul id="aboutmecontainer" class="actions" >
-						<li><a id="abtMeBtn" href="#about"  class="button" style="color: white;">About Me</a></li>
+						<li><a id="abtMeBtn" href="#portfolio"  class="button" style="color: white;">Full Portfolio</a></li>
 					</ul>
 				</div>
 			</header>
@@ -74,11 +74,11 @@
 						<div class="carousel-container">
 							<div class="slider">
 							<article class="work-item">
-								<a href="https://www.youtube.com/watch?v=vof-yaHX5fY" class="popup-youtube">
-								<img class="thumbpic" src="images/thumbs/HateMeThumb.JPG" alt="Geoffrey Gear sings I Know That You All Hate Me live opera video" />
+								<a href="https://www.youtube.com/watch?v=XMG6e3cLtHc&t=198s" class="popup-youtube">
+								<img class="thumbpic" src="images/thumbs/ah_mes.png" alt="Geoffrey Gear sing " />
 								</a>
-								<h3>I Know That You All Hate Me</h3>
-								<p>Add some details about this  </p>
+								<h3>Ah mes amis La fille du regiment</h3>
+								<!--<p>Add some details about this  </p> -->
 							</article>
 
 							<article class="work-item">
@@ -86,7 +86,7 @@
 								<img class="thumbpic" src="images/thumbs/QuantoEBella.JPG" alt="Geoffrey Gear sings Quanto E Bella live opera singing video" />
 								</a>
 								<h3>Quanto E Bella</h3>
-								<p>Add some details about this.</p>
+								<!-- <p>Add some details about this.</p> -->
 							</article>
 
 							<article class="work-item">
@@ -94,7 +94,7 @@
 								<img class="thumbpic" src="images/thumbs/QuandoTi.jpg" alt="Geoffrey Gear sings Quando ti rivedrò live" />
 								</a>
 								<h3>Quando ti rivedrò</h3>
-								<p>I Did Video 3 at this location</p>
+								<!-- <p>I Did Video 3 at this location</p> -->
 							</article>
 
 							<article class="work-item">
@@ -103,6 +103,13 @@
 								</a>
 								<h3>Jazz Holiday Concert 2024</h3>
 								<p>Performing for THE Ohio State University</p>
+							</article>
+								<article class="work-item">
+								<a href="https://www.youtube.com/watch?v=hLfxFyrkWrw" class="popup-youtube">
+								<img class="thumbpic" src="images/thumbs/HateMeThumb.JPG" alt="Geoffrey Gear sings I Know That You All Hate Me live opera video" />
+								</a>
+								<h3>I Know That You All Hate Me</h3>
+								<!-- <p>Add some details about this  </p> -->
 							</article>
 							</div>
 						</div>
@@ -212,26 +219,35 @@
 						<h1 class="section-title" style="margin-bottom:0;">Portfolio</h1>
 
 						<!-- Pictures Subsection -->
-						<div class="media-section ">
+						<div class="media-section">
 							<h2>Photos</h2>
 							<div class="media-grid">
 								<div class="media-item portfolio-picture">
+								<a href="images/media_page/IMG_4979.jpeg" class="media-popup">
 									<img src="images/media_page/IMG_4979.jpeg" alt="Geoffrey Gear performing live">
-									<!-- <p class="media-caption">Project 2 – Mobile App Layout</p> -->
+								</a>
+								<!-- <p class="media-caption">Project 2 – Mobile App Layout</p> -->
 								</div>
 								<div class="media-item">
+								<a href="images/media_page/IMG_4797.jpeg" class="media-popup">
 									<img src="images/media_page/IMG_4797.jpeg" alt="Geoffrey Gear performing live">
-									<!--<p class="media-caption">Project 1 – Web App UI Design</p>-->
+								</a>
+								<!--<p class="media-caption">Project 1 – Web App UI Design</p>-->
 								</div>
 								<div class="media-item">
+								<a href="images/media_page/IMG_5013.jpeg" class="media-popup">
 									<img src="images/media_page/IMG_5013.jpeg" alt="Geoffrey Gear performing live">
+								</a>
 								</div>
 								<div class="media-item">
+								<a href="images/media_page/IMG_5096_1.jpeg" class="media-popup">
 									<img src="images/media_page/IMG_5096_1.jpeg" alt="Geoffrey Gear performing live">
+								</a>
 								</div>
-							<!-- Add more as needed -->
+								<!-- Add more as needed -->
 							</div>
-						</div>
+							</div>
+
 
 						<!-- Videos Subsection -->
 						<div class="media-section">
@@ -490,7 +506,8 @@
 /* Optional: ensure slick-dots spacing doesn’t overlap section */
 .slick-dots {
   margin-top: 1rem;
- }
+  ;
+}
 </style>
  <script src="assets/js/hamburger.js"></script>
 
@@ -582,7 +599,15 @@ let originalFormHTML = document.querySelector('#modalContactForm').outerHTML;
 			}
 			]
 		});
+		
 	});
+		$('.media-grid').magnificPopup({
+					delegate: 'a.media-popup',
+					type: 'image',
+					gallery: {
+						enabled: true
+					}
+				 });
 </script>
 
 
@@ -601,9 +626,27 @@ window.onload = function() {
         e.preventDefault(); // Prevent the default anchor behavior
 		document.getElementById('modalContactForm').submit(); // Submit the form
     });
-	document.getElementById('abtMeBtn').addEventListener('click', function(event) {
-		event.preventDefault(); // Prevent default anchor click behavior
-		document.getElementById('four').scrollIntoView({ behavior: 'smooth' });
+ 
+
+	document.getElementById('abtMeBtn').addEventListener('click', function (e) {
+		e.preventDefault(); // Prevent default anchor behavior
+
+		// Check if the device is considered mobile (adjust breakpoint if needed)
+		const isMobile = window.innerWidth <= 768;
+
+		if (isMobile) {
+			window.location.href = 'portfolio.html'; // Mobile redirect
+		} else {
+			const tabLinks = document.querySelectorAll(".tab-link");	
+			tabLinks.forEach(link => {
+				link.classList.remove("active");
+
+				// Add "active" only to the portfolio tab
+				if (link.dataset.tab === "portfolio") {
+					link.classList.add("active");
+				}
+		});
+		}
 	});
 
 

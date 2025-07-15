@@ -2330,6 +2330,11 @@ input, select, textarea {
         max-width: 100%; /* Full width on small screens */
         margin-bottom: 1em; /* Add margin between stacked tiles */
     }
+	/* Hover effect */
+	.tile:hover {
+		transform: translateY(-10px);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 }
 
 @media (max-width: 480px) {
@@ -2340,6 +2345,11 @@ input, select, textarea {
     .tile-header {
         font-size: 1.2em; 
     }
+	/* Hover effect */
+	.tile:hover {
+		transform: translateY(-10px);
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	}
 }
 
 
