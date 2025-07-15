@@ -14,11 +14,21 @@
 		<meta property="og:image" content="images/geoff_brick.jpg" />
 	
 	</head>
-	<body class="is-preload">
+	<body class="is-preload" style="background-color: #3F3A3A;">
 
 		<!-- Header -->	
 			<header id="header">
 				<div class="inner">
+					<div class="tabs-container-mobile">
+						<button class="hamburger" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+						<ul class="tabs">
+							<li><a href="#home" class="tab-link active" data-tab="home">Home</a></li>
+							<li><a href="#about" class="tab-link" data-tab="about">About</a></li>
+							<li><a href="#services" class="tab-link" data-tab="services">Services</a></li>
+							<li><a href="#portfolio" class="tab-link" data-tab="portfolio">Portfolio</a></li>
+							<li><a href="#contact" class="tab-link" data-tab="contact">Contact</a></li>
+						</ul>
+					</div>
 					<a href="#" class="image avatar" style="width:250px;"><img src="images/geoff_brick.jpg" alt="" /></a>
 					<h1>
 						<strong style="font-size: 48px; font-weight: 1000;">Geoffrey Gear</strong>
@@ -36,12 +46,9 @@
 				</div>
 			</header>
 
-
-		<!-- Main -->
-		<div id="main" >
-		<!-- Tabs Navigation -->
+	<!-- Tabs Navigation mainly for desktop -->
 		<div class="tabs-container">
-			<ul class="tabs">
+ 			<ul class="tabs">
 				<li><a href="#home" class="tab-link active" data-tab="home">Home</a></li>
 				<li><a href="#about" class="tab-link" data-tab="about">About</a></li>
 				<li><a href="#services" class="tab-link" data-tab="services">Services</a></li>
@@ -49,6 +56,9 @@
 				<li><a href="#contact" class="tab-link" data-tab="contact">Contact</a></li>
 			</ul>
 		</div>
+		<!-- Main -->
+		<div id="main" >
+	
 			<div id="sections-container" >
 					<!-- One -->
 				<section id="home" class="active-section">
@@ -480,17 +490,16 @@
 /* Optional: ensure slick-dots spacing doesn’t overlap section */
 .slick-dots {
   margin-top: 1rem;
-  ;
-}
+ }
 </style>
+ <script src="assets/js/hamburger.js"></script>
+
 <script>
 
 let originalFormHTML = document.querySelector('#modalContactForm').outerHTML;
-// Get all the tab links and content
-const tabLinks = document.querySelectorAll('.tab-link');
-    const tabContents = document.querySelectorAll('.tab-content');
-    const mainContent = document.getElementById('main');
+ 
 
+ 
 </script>
 
 			<!-- Scripts -->
@@ -639,6 +648,7 @@ window.onload = function() {
         });
       });
     });
+
 </script>
 
 </body>

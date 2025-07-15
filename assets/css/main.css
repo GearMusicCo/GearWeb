@@ -3246,9 +3246,7 @@ input, select, textarea {
 				text-align: center;
 			}
 
-			header.major h2 {
-				font-size: 1.35em;
-			}
+
 
 		/* List */
 
@@ -3280,6 +3278,7 @@ input, select, textarea {
 
 			#main {
 				padding: .5em 1.5em 0.25em 1.5em;
+				display: none;
 			}
 
 				#main > section {
@@ -3303,11 +3302,7 @@ input, select, textarea {
 /* XSmall */
 
 	@media screen and (max-width: 480px) {
-		/*Main*/ 
-		#main {
-			display: none;
-		}
- 
+		
 
 		/* Header */
 
@@ -3412,6 +3407,11 @@ input, select, textarea {
     background-color: #524c4c;
     border-radius: 10px;
 	margin: 0px 0px 0em 0px;
+	max-width: 73em;
+	margin-left: 30%;
+}
+ .tabs-container-mobile {
+    display: none
 }
 /* Style for each table holding list of tab */
 .tabs {
@@ -3448,7 +3448,62 @@ input, select, textarea {
 .tabs a:hover {
     background-color: #555;
 }
+.hamburger {
+    display: none;
+    background: none;
+    color: white;
+    font-size: 28px;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+}
 
+/* Responsive changes for mobile */
+@media screen and (max-width: 768px) {
+	.tabs-container {
+		display: none; /* Hide the desktop tabs */
+	}	
+	.tabs-container-mobile {
+		display: flex;
+		justify-content: left;
+		align-items: center; 
+		height: 50px;
+		width: 50px;;
+		background-color: #524c4c;
+		border-radius: 10px;
+		margin: 0px 0px 0em 0px;
+ 		 
+	}
+ 
+
+    .tabs li {
+        flex: none;
+        text-align: center;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .tabs {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+		opacity: 0;
+		position: absolute;
+		top: 50px;
+		left: 0;
+		width: 100%;
+		flex-direction: column;
+		background-color: #524c4c;
+		z-index: 1000;
+	}
+
+	.tabs.show {
+		max-height: 500px; /* Enough height to show full menu */
+		opacity: 1;
+	}
+}
  
 
 .flex-container {
@@ -3562,3 +3617,4 @@ input, select, textarea {
         display: block;
       }
     }
+	
