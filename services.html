@@ -218,7 +218,15 @@ window.onload = function() {
 	BindServiceTiles();
 }; 
  
-
+				function redirectIfNotMobile() {
+					const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768;
+					if (!isMobile) {
+						// Replace this with your actual homepage path if needed
+						window.location.href = 'index.html';
+					}
+				}
+				// Run the function on page load
+				window.addEventListener('load', redirectIfNotMobile);
 </script>
 </body>
 </html>
