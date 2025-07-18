@@ -95,24 +95,24 @@
 			<div class="media-section">
 				<h2>Photos</h2>
 				<div class="media-grid">
-					<div class="media-item portfolio-picture">
+					<div class="media-item photo-fill">
 						<a href="images/media_page/IMG_4979.jpeg" class="media-popup">
 							<img src="images/media_page/IMG_4979.jpeg" alt="Geoffrey Gear performing live">
 						</a>
 						<!-- <p class="media-caption">Project 2 – Mobile App Layout</p> -->
 					</div>
-					<div class="media-item">
+					<div class="media-item photo-fill">
 						<a href="images/media_page/IMG_4797.jpeg" class="media-popup">
 							<img src="images/media_page/IMG_4797.jpeg" alt="Geoffrey Gear performing live">
 						</a>
 						<!--<p class="media-caption">Project 1 – Web App UI Design</p>-->
 					</div>
-					<div class="media-item">
+					<div class="media-item photo-fill">
 						<a href="images/media_page/IMG_5013.jpeg" class="media-popup">
 							<img src="images/media_page/IMG_5013.jpeg" alt="Geoffrey Gear performing live">
 						</a>
 					</div>
-					<div class="media-item">
+					<div class="media-item photo-fill">
 						<a href="images/media_page/IMG_5096_1.jpeg" class="media-popup">
 							<img src="images/media_page/IMG_5096_1.jpeg" alt="Geoffrey Gear performing live">
 						</a>
@@ -188,17 +188,24 @@
 					padding: 0.5em;
 					box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 					color: #fff;
+
+					width: 200px;
+					height: 280px;  
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					align-items: center;
 				}
 
 				/* Image and video thumbnails */
 				.media-item img {
 					width: 100%;
-					height: auto;
+					height: 180px;        /* Uniform image height */
+					object-fit: cover;    /* Crops image nicely without stretching */
 					border-radius: 4px;
 					display: block;
 					margin-bottom: 0.5em;
 				}
-
 				/* Text inside media items */
 				.media-item h3 {
 					margin: 0.5em 0 0.2em;
@@ -221,6 +228,13 @@
 				.slick-dots {
 					color: white;
 				}
+				.photo-fill {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					display: block;
+				}
+
 			</style>
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 			<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
