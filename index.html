@@ -81,7 +81,7 @@
 											<p>Ohio State University Men’s Lacrosse </p>
 								</article>
 								<article class="work-item">
-									<a href="https://www.youtube.com/watch?v=XMG6e3cLtHc&t=198s" class="popup-youtube">
+									<a href="https://www.youtube.com/watch?v=XMG6e3cLtHc&t" class="popup-youtube">
 									<img class="thumbpic" src="images/thumbs/ah_mes.png" alt="Geoffrey Gear sing " />
 									</a>
 									<h3>Ah mes amis La fille du regiment</h3>
@@ -615,6 +615,14 @@ let originalFormHTML = document.querySelector('#modalContactForm').outerHTML;
 						enabled: true
 					}
 				 });
+
+		$('.slider').magnificPopup({
+			delegate: 'a.popup-youtube',
+			type: 'iframe',
+			preloader: false,
+			fixedContentPos: false
+		});
+
 </script>
 
 
