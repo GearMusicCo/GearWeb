@@ -559,7 +559,9 @@ let originalFormHTML = document.querySelector('#modalContactForm').outerHTML;
 								let startTime = start ? start[2] : null;
 								return id + (startTime ? '?start=' + startTime : '');
 							},
-							src: 'https://www.youtube.com/embed/%id%&autoplay=1'
+							src: function(id) {
+								return 'https://www.youtube.com/embed/' + id + (id.includes('?') ? '&' : '?') + 'autoplay=1';
+							}
 						}
 						}
 					}
