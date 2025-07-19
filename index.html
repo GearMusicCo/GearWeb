@@ -104,7 +104,7 @@
 								</article>
 
 								<article class="work-item">
-									<a href="https://www.youtube.com/watch?v=pR-UMLaKhyw&start=7579" class="popup-youtube">
+									<a href="https://www.youtube.com/watch?v=pR-UMLaKhyw" class="popup-youtube">
 									<img class="thumbpic" src="images/thumbs/holiday_jazz_1.png" alt="Jazz Holiday Concert 2024 Geoffrey Gear" />
 									</a>
 									<h3>Jazz Holiday Concert 2024</h3>
@@ -548,24 +548,15 @@ let originalFormHTML = document.querySelector('#modalContactForm').outerHTML;
 				$('.popup-youtube').magnificPopup({
 					type: 'iframe',
 					iframe: {
-						patterns: {
-						youtube: {
-							index: 'youtube.com/',
-							id: function(url) {
-								// Extract full query string starting at v=
-								const match = url.match(/[?&]v=([^&]+)/);
-								const start = url.match(/[?&](start|t)=([^&]+)/);
-								let id = match ? match[1] : null;
-								let startTime = start ? start[2] : null;
-								return id + (startTime ? '?start=' + startTime : '');
-							},
-							src: function(id) {
-								return 'https://www.youtube.com/embed/' + id + (id.includes('?') ? '&' : '?') + 'autoplay=1';
+							patterns: {
+								youtube: {
+									index: 'youtube.com/', 
+									id: 'v=', 
+									src: 'https://www.youtube.com/embed/%id%?autoplay=1' 
+								}
 							}
 						}
-						}
-					}
-			    });
+				});
 			});
 
 </script>
