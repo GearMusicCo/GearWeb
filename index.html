@@ -655,15 +655,22 @@ window.onload = function() {
 		if (isMobile) {
 			window.location.href = 'portfolio.html'; // Mobile redirect
 		} else {
-			const tabLinks = document.querySelectorAll(".tab-link");	
+			const tabLinks = document.querySelectorAll(".tabs-container .tab-link");	
 			tabLinks.forEach(link => {
 				link.classList.remove("active");
+			});
+ 
+			const portfolioSection = document.getElementById("portfolio");
+          	if (portfolioSection) portfolioSection.classList.add("active-section");
 
-				// Add "active" only to the portfolio tab
-				if (link.dataset.tab === "portfolio") {
-					link.classList.add("active");
-				}
-		});
+			const sections = document.querySelectorAll("section");
+			// Hide all sections
+			sections.forEach(section => section.classList.remove("active-section"));
+
+			// Show target section
+			const activeSection = document.getElementById("portfolio");
+			if (activeSection) activeSection.classList.add("active-section");
+			$('.media-grid').slick('setPosition');
 		}
 	});
 
