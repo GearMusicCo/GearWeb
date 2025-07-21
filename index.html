@@ -352,7 +352,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="icon solid">
+						<a href="#" id="contactLinkButton" class="icon solid">
 							<i class="fas fa-envelope"></i>
 							<span class="label">Email</span>
 						</a>
@@ -644,7 +644,11 @@ window.onload = function() {
         e.preventDefault(); // Prevent the default anchor behavior
 		document.getElementById('modalContactForm').submit(); // Submit the form
     });
- 
+	document.getElementById('contactLinkButton').addEventListener('click', function(event) {
+    	event.preventDefault(); // Prevent default anchor behavior
+    	showTabSection('contact');
+	});
+
 
 	document.getElementById('abtMeBtn').addEventListener('click', function (e) {
 		e.preventDefault(); // Prevent default anchor behavior
@@ -717,6 +721,35 @@ window.onload = function() {
       });
     });
 
+	function showTabSection(tabName){ 
+		const tabs = document.querySelectorAll(".tab-link");
+		const sections = document.querySelectorAll("section");
+
+const isMobile = window.innerWidth <= 768;
+
+		if (isMobile) {
+			window.location.href = tabName + '.html'; // Mobile redirect
+		} else {
+
+		// Hide all sections
+			sections.forEach(section => section.classList.remove("active-section"));
+
+			// Show target section
+			const activeSection = document.getElementById(tabName);
+			if (activeSection) activeSection.classList.add("active-section");
+
+			// Update active tab style
+			tabs.forEach(t => t.classList.remove("active"));
+			document.querySelector(`.tab-link[data-tab="${tabName}"]`).classList.add("active");
+			
+			if(tabName === 'home') {
+				$('.slider').slick('setPosition');
+			}
+			if(tabName === 'portfolio') {
+				$('.media-grid').slick('setPosition');
+			}
+		}
+	}
 </script>
 
 </body>
