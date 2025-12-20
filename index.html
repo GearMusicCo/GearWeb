@@ -682,7 +682,36 @@ window.onload = function() {
 		}
 	});
 
+ document.addEventListener('DOMContentLoaded', () => {
+    const button = document.querySelector('.hamburger');
+    const notes = ['♪', '♫', '♬'];
 
+    const interval = setInterval(() => {
+      // Restart shake animation
+      button.classList.remove('shake');
+      void button.offsetWidth; // force reflow
+      button.classList.add('shake');
+
+      // Emit music notes
+      for (let i = 0; i < 2; i++) {
+        const note = document.createElement('span');
+        note.className = 'music-note';
+        note.textContent = notes[Math.floor(Math.random() * notes.length)];
+        note.style.setProperty('--x', `${Math.random() * 20 - 10}px`);
+        note.style.left = '50%';
+        note.style.top = '0';
+
+        button.appendChild(note);
+        note.addEventListener('animationend', () => note.remove());
+      }
+    }, 500); // pulse rate
+
+    // Stop everything after 5 seconds
+    setTimeout(() => {
+      clearInterval(interval);
+      button.classList.remove('shake');
+    }, 5000);
+  });
 
 </script>
 <script>
