@@ -54,14 +54,14 @@ function BindServiceTiles (){
         
 
         // Show the modal
-        var modal = document.getElementById("contactModal"); 
+        var modal = document.getElementById("contactModal");
         modal.style.display = "block";
     });
     });
 
     // Listen for close click
-    closeBtn. addEventListener("click", function() {
-        modal.style.display = "none";
+    closeBtn.addEventListener("click", function() {
+    modal.style.display = "none";
     });
 
     // Listen for outside click
