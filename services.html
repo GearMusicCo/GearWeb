@@ -216,6 +216,9 @@
 
 window.onload = function() {
 	BindServiceTiles();
+	const subjectInput = document.getElementById('modalSubject');
+    if (!subjectInput) return;
+    subjectInput.value += ' - ' + new Date().toLocaleString();
 }; 
  
 				function redirectIfNotMobile() {
@@ -227,6 +230,9 @@ window.onload = function() {
 				}
 				// Run the function on page load
 				window.addEventListener('load', redirectIfNotMobile);
+
+
+				
 </script>
 </body>
 </html>

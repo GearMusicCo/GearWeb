@@ -676,6 +676,10 @@ let originalFormHTML = document.querySelector('#modalContactForm').outerHTML;
 
 window.onload = function() {
 	BindServiceTiles();
+	const subjectInput = document.getElementById('modalSubject');
+    if (!subjectInput) return;
+
+    subjectInput.value += ' - ' + new Date().toLocaleString();
 };
 //Form submit for <a> tag to play nice w css
 	document.getElementById('submitLink').addEventListener('click', function(e) {
