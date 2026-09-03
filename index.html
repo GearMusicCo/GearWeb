@@ -414,18 +414,16 @@
 						</p>
 						<div class="row">
 							<div class="col-8 col-12-small">
-							<form method="post" action="https://formsubmit.co/gearmusicco@gmail.com" id="contactForm">
+							<form method="post" action="https://formspree.io/f/moeqwnre" id="contactForm">
 									<div class="row gtr-uniform gtr-50">
 										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" required/></div>
 										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" required/></div>
 										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4" required></textarea></div>
-										<input type="hidden" name="_next" id="nextPage" value="https://geoffreywgear.com/thankyou.html">
-										<input type="hidden" name="_subject" value="Submission from website - New Contact or Inquiry">
-										<input type="hidden" name="_captcha" value="true">
+										<input type="hidden" name="subject" value="Submission from website - New Contact or Inquiry">
 
 									</div>
 									<ul class="actions" style="justify-content: center; padding-top: 1em;">
-										<li><a href="#" type="submit" id="submitLink" class="button">Send Inquiry</a></li>
+										<li><button type="submit" class="button">Send Inquiry</button></li>
 									</ul>
 							</form>
 
@@ -487,7 +485,7 @@
 	  <span class="close">&times;</span>
 	  <h2 id="modalHeader"></h2>
 	  <p id="modalDescription"></p>
-	  <form method="post" action="https://formsubmit.co/gearmusicco@gmail.com" id="modalContactForm">
+	  <form method="post" action="https://formspree.io/f/moeqwnre" id="modalContactForm">
 		<div class="row gtr-uniform gtr-50">
 			<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" required/></div>
 			<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" required/></div>
@@ -497,9 +495,7 @@
 				<input type="checkbox" id="isparent" name="parent_of_student" value="no" placeholder="I am a parent of a student">
 				<label for="isparent">I am a parent of a student</label>
 			</div>
-			<input type="hidden" name="_next" id="nextPage" value="https://geoffreywgear.com/thankyou.html">
-			<input id="modalSubject" type="hidden" name="_subject" value="Submission from website - New Contact or Inquiry">
-			<input type="hidden" name="_captcha" value="true">
+			<input id="modalSubject" type="hidden" name="subject" value="Submission from website - New Contact or Inquiry">
 		</div>
 		<ul class="actions" style="justify-content: center; padding-top: 1em;">
 			<li><button type="submit" id="submitModalLink" class="button">Send Inquiry</button></li>
@@ -763,15 +759,6 @@ window.onload = function() {
 
     subjectInput.value += ' - ' + new Date().toLocaleString();
 };
-//Form submit for <a> tag to play nice w css
-	document.getElementById('submitLink').addEventListener('click', function(e) {
-        e.preventDefault(); // Prevent the default anchor behavior
-		document.getElementById('contactForm').submit(); // Submit the form	
-    });
-	document.getElementById('submitModalLink').addEventListener('click', function(e) {
-        e.preventDefault(); // Prevent the default anchor behavior
-		document.getElementById('modalContactForm').submit(); // Submit the form
-    });
 	document.getElementById('contactLinkButton').addEventListener('click', function(event) {
     	event.preventDefault(); // Prevent default anchor behavior
     	showTabSection('contact');
