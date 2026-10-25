@@ -194,6 +194,30 @@
 							</p>
 						</div>
 					</div>
+
+					<div class="home-services">
+						<div class="home-services-layout">
+							<div class="home-services-feature">
+								<p class="home-services-eyebrow">Voice lessons shaped around you</p>
+								<h2>Private 1-on-1 Vocal Music Lessons</h2>
+								<p>Build your voice with personalized lessons for singers of all ages and experience levels. Explore classical, musical theatre, jazz, or contemporary singing with coaching tailored to your goals.</p>
+								<p class="home-services-location"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Serving Columbus, Gahanna, and nearby Central Ohio communities</p>
+								<div class="home-services-actions">
+									<a href="#contact" class="button" onclick="event.preventDefault(); showTabSection('contact')">Ask about lessons</a>
+									<a href="#services" onclick="event.preventDefault(); showTabSection('services')">Explore all services</a>
+								</div>
+							</div>
+							<div class="home-services-other">
+								<h3>Also available for</h3>
+								<ul>
+									<li>Weddings</li>
+									<li>Church and sacred music</li>
+									<li>Corporate events</li>
+									<li>Retirement communities</li>
+								</ul>
+							</div>
+						</div>
+					</div>
 				</section>
 
 				<!-- Two -->
@@ -637,6 +661,98 @@
 #abtMeBtn {
     color: white !important;
     font-weight: bold !important;
+}
+.home-services {
+	margin: 2rem 0 1rem;
+	padding: 1.5rem;
+	border-left: 4px solid #49bf9d;
+	background: #302d2d;
+	color: #fff;
+}
+.home-services-layout {
+	display: grid;
+	grid-template-columns: minmax(0, 2fr) minmax(200px, 1fr);
+	gap: 2rem;
+	align-items: center;
+}
+.home-services-eyebrow {
+	margin-bottom: 0.4rem;
+	color: #49bf9d;
+	font-size: 0.85rem;
+	font-weight: bold;
+}
+.home-services-feature h2 {
+	margin-bottom: 0.75rem;
+	color: #fff;
+	font-size: 1.6rem;
+	line-height: 1.25;
+}
+.home-services-feature > p:not(.home-services-eyebrow) {
+	margin-bottom: 0.75rem;
+	font-size: 1rem;
+	line-height: 1.6;
+}
+.home-services-location {
+	color: #d1d1d1;
+}
+.home-services-location i {
+	margin-right: 0.4rem;
+	color: #49bf9d;
+}
+.home-services-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1rem;
+	margin-top: 1rem;
+}
+.home-services-actions a:not(.button) {
+	font-size: 0.95rem;
+}
+.home-services-other {
+	border-left: 1px solid rgba(255, 255, 255, 0.2);
+	padding-left: 1.5rem;
+}
+.home-services-other h3 {
+	margin-bottom: 0.5rem;
+	color: #fff;
+	font-size: 1.1rem;
+}
+.home-services-other ul {
+	list-style: disc;
+	padding-left: 1.1rem;
+	font-size: 0.95rem;
+}
+@media screen and (max-width: 736px) {
+	#main {
+		display: block;
+		margin: 0;
+		max-width: none;
+		padding: 0 1rem 1rem;
+		width: 100%;
+	}
+	#main > section {
+		border-top: 0;
+		margin: 0;
+		padding: 0;
+	}
+	#home > header.major,
+	#home > .flex-container {
+		display: none;
+	}
+	.home-services {
+		margin: 1rem 0;
+		padding: 1.25rem;
+	}
+	.home-services-layout {
+		grid-template-columns: 1fr;
+		gap: 1.25rem;
+	}
+	.home-services-other {
+		border-top: 1px solid rgba(255, 255, 255, 0.2);
+		border-left: 0;
+		padding: 1rem 0 0;
+	}
 }
 </style>
  <script src="assets/js/hamburger.js"></script>
