@@ -420,6 +420,7 @@
 										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" required/></div>
 										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" required/></div>
 										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4" required></textarea></div>
+										<input type="hidden" name="_next" value="~/thankyou.html">
 										<input type="hidden" name="subject" value="Submission from website - New Contact or Inquiry">
 
 									</div>
@@ -496,6 +497,7 @@
 				<input type="checkbox" id="isparent" name="parent_of_student" value="no" placeholder="I am a parent of a student">
 				<label for="isparent">I am a parent of a student</label>
 			</div>
+			<input type="hidden" name="_next" value="~/thankyou.html">
 			<input id="modalSubject" type="hidden" name="subject" value="Submission from website - New Contact or Inquiry">
 		</div>
 		<ul class="actions" style="justify-content: center; padding-top: 1em;">
@@ -831,8 +833,9 @@ window.onload = function() {
     const currentDomain = window.location.origin;
 
     // Select the input and replace the "~" with the actual domain
-    const nextPageInput = document.getElementById('nextPage');
-    nextPageInput.value = nextPageInput.value.replace('~', currentDomain);
+    document.querySelectorAll('input[name="_next"]').forEach(nextPageInput => {
+        nextPageInput.value = nextPageInput.value.replace('~', currentDomain);
+    });
 	
 </script>
 <script>
