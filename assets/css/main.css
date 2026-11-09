@@ -3318,7 +3318,8 @@ input, select, textarea {
 
 			#header {
 				padding: 4.5em 1.5em, 0em, 1.5em;
-				height: 94vh;
+				height: auto;
+				min-height: 94vh;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-evenly; /* or space-around/space-evenly */
@@ -3688,4 +3689,72 @@ input, select, textarea {
         display: block;
       }
     }
+
+.mobile-lesson-promo {
+    display: none;
+}
+
+@media screen and (max-width: 980px) {
+  #header .mobile-lesson-promo {
+    clear: both;
+    display: block;
+    max-width: 38em;
+    margin: 1.5em auto 2em;
+    padding: 1.25em;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 12px;
+    background: rgba(31, 24, 21, 0.78);
+    color: #fff;
+    text-align: left;
+  }
+
+  .mobile-lesson-location {
+    margin: 0 0 0.5em;
+    font-size: 0.85em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mobile-lesson-promo h2 {
+    margin: 0 0 0.5em;
+    color: #fff;
+    font-size: 1.45em;
+    text-align: center;
+  }
+
+  .mobile-lesson-promo > p:not(.mobile-lesson-location) {
+    margin: 0;
+    text-align: center;
+  }
+
+  .mobile-lesson-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75em 1em;
+    margin-top: 1em;
+  }
+
+  .mobile-lesson-actions .button {
+    margin: 0;
+  }
+
+  .mobile-lesson-contact {
+    color: #fff;
+    font-weight: 700;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #header .mobile-lesson-promo {
+    padding: 1em;
+  }
+
+  .mobile-lesson-actions {
+    align-items: center;
+    flex-direction: column;
+  }
+}
 	
