@@ -1,0 +1,173 @@
+/*
+	Tailwind source for the whole site.
+	Build (from the repo root):
+		tools/tailwindcss.exe -i assets/css/src/site.css -o assets/css/site.css --minify
+	Commit the built assets/css/site.css; GitHub Pages serves it as-is.
+
+	Image urls below are relative to the BUILT file (assets/css/site.css).
+*/
+
+@import "tailwindcss" source(none);
+
+/* Paths are relative to this file (assets/css/src/) */
+@source "../../../*.html";
+@source "../../js/site.js";
+
+@theme {
+	--font-sans: "Source Sans Pro", Helvetica, sans-serif;
+	--font-serif: Georgia, serif;
+
+	--color-ink: #3f3a3a;      /* page background */
+	--color-panel: #524c4c;    /* cards, tab bar, menu */
+	--color-sidebar: #1f1815;  /* sidebar base under the sheet-music image */
+	--color-body: #a2a2a2;     /* body text */
+	--color-heading: #787878;  /* headings, button text */
+	--color-soft: #b2b2b2;     /* placeholders, icons */
+	--color-tile: #dddddd;     /* service tile text and border */
+	--color-field: #f7f7f7;    /* form field background */
+	--color-line: #efefef;     /* button border */
+	--color-accent: #49bf9d;   /* hover / focus green */
+
+	--animate-shake: shake 0.35s ease-in-out;
+	--animate-float-up: float-up 1s ease-out forwards;
+
+	@keyframes shake {
+		0% { transform: rotate(0deg); }
+		25% { transform: rotate(-5deg); }
+		50% { transform: rotate(5deg); }
+		75% { transform: rotate(-3deg); }
+		100% { transform: rotate(0deg); }
+	}
+
+	@keyframes float-up {
+		from { opacity: 1; transform: translate(0, 0); }
+		to { opacity: 0; transform: translate(var(--x, 0), -30px); }
+	}
+}
+
+@layer base {
+	/* The old template bumped the base size to 16pt on very wide screens; rem-based sizes follow. */
+	@media (min-width: 1801px) {
+		html { font-size: 133.333%; }
+	}
+
+	body {
+		background-color: var(--color-ink);
+		color: var(--color-body);
+		font-family: var(--font-sans);
+		/* em (not unitless) on purpose: children inherit the computed 28px, as before */
+		line-height: 1.75em;
+	}
+
+	::placeholder {
+		color: var(--color-soft);
+		opacity: 1;
+	}
+}
+
+@layer components {
+	/* Sheet-music background used by the sidebar header and the footer */
+	.bg-notes {
+		background-color: var(--color-sidebar);
+		background-image: url("../../images/overlay.png"), url("../../images/bg3.jpg");
+		background-repeat: repeat, no-repeat;
+		background-size: auto, cover;
+		background-position: top left, center;
+	}
+
+	/* Short photo banner shown above the content on phones (every page except home) */
+	.bg-banner {
+		background-image: url("../../images/gear_choir_solo.jpg");
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	.btn {
+		@apply inline-block h-[calc(2.75em+6px)] min-w-[10em] cursor-pointer rounded-[0.35em] border-[3px] border-line bg-transparent px-[1.5em] text-center leading-[2.75em] whitespace-nowrap text-heading transition-colors duration-200 ease-in-out;
+	}
+	.btn:hover {
+		@apply border-accent text-accent;
+	}
+	.btn:active {
+		@apply border-accent bg-accent/10 text-accent;
+	}
+
+	/* Dark rounded card with serif text (home text, about text, home carousel) */
+	.panel {
+		@apply rounded-xl bg-panel font-serif leading-[1.7] tracking-[0.3px] text-[#f5f5f5] shadow-[0_0_20px_rgba(0,0,0,0.3)];
+	}
+
+	.section-title {
+		@apply mb-8 pt-8 pb-[0.2em] text-center text-[2rem] leading-[1.5] text-white [text-shadow:1px_1px_2px_gray] md:pt-0 md:pb-0 md:text-[2.5rem] md:text-heading;
+	}
+
+	/* Navigation link: tab bar on desktop, dropdown row on phones */
+	.tab {
+		@apply block w-full rounded-[5px] border-b border-dotted border-white bg-panel py-2.5 text-center text-[18px] font-bold text-white transition-colors duration-300 hover:bg-[#555];
+	}
+
+	.field {
+		@apply block h-[2.75em] w-full appearance-none rounded-[0.35em] border-2 border-transparent bg-field px-[0.75em] text-inherit outline-0 focus:border-accent;
+	}
+	textarea.field {
+		@apply h-auto p-[0.75em];
+	}
+
+	.checkbox {
+		@apply size-[1.65em] flex-none cursor-pointer appearance-none rounded-[0.35em] border-2 border-transparent bg-field bg-center bg-no-repeat focus-visible:border-accent;
+		background-size: 70%;
+	}
+	.checkbox:checked {
+		@apply border-heading bg-heading;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' d='M3 8.5l3.2 3.2L13 4.8'/%3E%3C/svg%3E");
+	}
+
+	/* Service tile; site.js opens the inquiry modal from these */
+	.tile {
+		@apply mb-4 w-full cursor-pointer rounded-lg border border-tile bg-panel p-6 shadow-[0_4px_8px_rgba(0,0,0,0.1)] transition-[transform,box-shadow] duration-300 ease-in-out hover:-translate-y-2.5 hover:shadow-[0_8px_16px_rgba(0,0,0,0.2)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:mb-0 md:max-w-[calc(33.333%-1rem)] md:flex-[1_1_calc(33.333%-1rem)];
+	}
+
+	/* Portfolio carousel card (videos and photos) */
+	.media-item {
+		@apply overflow-hidden rounded-lg bg-[#2f2a2a] p-2 text-center text-white shadow-[0_2px_5px_rgba(0,0,0,0.5)] transition-transform duration-300 ease-in-out md:mx-2.5 md:overflow-visible md:rounded-2xl md:bg-panel md:p-4 md:shadow-[0_4px_8px_rgba(0,0,0,0.1)] md:hover:-translate-y-[5px];
+	}
+	.media-item img {
+		@apply mb-2 block h-auto w-full rounded object-cover md:mx-auto md:mb-0 md:h-[300px] md:w-[95%] md:rounded-lg;
+	}
+	.media-item h3 {
+		@apply mt-[0.5em] mb-[0.2em] text-[1.1em] leading-[1.5] text-heading md:mt-0 md:mb-5 md:text-[1.25em];
+	}
+	.media-item p {
+		@apply m-0 text-[0.9em] md:-mt-4 md:mb-1;
+	}
+
+	/* Play button over YouTube thumbnails; the class is also the Magnific Popup hook */
+	.popup-youtube {
+		position: relative;
+		display: block;
+	}
+	.popup-youtube::after {
+		content: "▶";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		z-index: 2;
+		width: 56px;
+		height: 56px;
+		padding-left: 4px;
+		border-radius: 50%;
+		background-color: rgb(0 0 0 / 0.65);
+		color: rgb(255 255 255 / 0.95);
+		font-size: 1.4rem;
+		line-height: 56px;
+		text-align: center;
+		pointer-events: none;
+		transform: translate(-50%, -50%);
+		transition: background-color 0.25s ease, transform 0.25s ease;
+	}
+	.popup-youtube:hover::after {
+		background-color: rgb(220 0 0 / 0.88);
+		transform: translate(-50%, -50%) scale(1.15);
+	}
+}
