@@ -67,7 +67,7 @@
 
 		<main id="main" class="md:max-w-[73rem] md:px-4 md:pt-2 md:pb-4 lg:ml-[30%] xl:pt-1 xl:pr-4 xl:pb-8 xl:pl-2">
 			<section id="services" class="px-8 pb-8 text-center">
-				<h1 class="section-title">Services</h1>
+				<h1 class="section-title"><span class="eyebrow">Services</span>Now Booking</h1>
 				<!-- Each tile opens the inquiry modal; see the data-* notes in assets/js/site.js -->
 				<div class="flex flex-col items-center gap-4 md:flex-row md:flex-wrap md:items-stretch md:justify-center">
 					<div class="tile" role="button" tabindex="0" aria-haspopup="dialog"
@@ -132,8 +132,8 @@
 
 		<!-- Service inquiry modal, opened by the tiles above (assets/js/site.js) -->
 		<div id="contact-modal" class="fixed inset-0 z-[2000] overflow-auto bg-black/50" role="dialog" aria-modal="true" aria-labelledby="modal-heading" hidden>
-			<div class="mx-auto my-[15vw] w-4/5 rounded-[10px] border border-[#888] bg-[#fefefe] p-5 shadow-[0_5px_15px_rgba(0,0,0,0.3)] sm:w-1/2">
-				<button type="button" class="float-right ml-4 cursor-pointer text-[28px] leading-none font-bold text-[#aaa] hover:text-black focus-visible:text-black" aria-label="Close" data-modal-close>&times;</button>
+			<div class="mx-auto my-[15vw] w-4/5 rounded-[10px] border border-line/40 bg-panel p-5 shadow-[0_5px_15px_rgba(0,0,0,0.5)] sm:w-1/2">
+				<button type="button" class="float-right ml-4 cursor-pointer text-[28px] leading-none font-bold text-soft hover:text-accent focus-visible:text-accent" aria-label="Close" data-modal-close>&times;</button>
 				<h2 id="modal-heading" class="mb-[1em] text-[1.2em] leading-[1.5] text-heading md:text-[1.5em]"></h2>
 				<p id="modal-description" class="mb-8"></p>
 				<form method="post" action="https://formspree.io/f/moeqwnre" id="modal-form">
