@@ -24,6 +24,8 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@0;1&amp;display=swap" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 		<link rel="stylesheet" href="assets/css/site.css" />
+		<!-- Hold the first paint until the whole page (scripts included) is parsed, so page transitions snapshot a finished page -->
+		<link rel="expect" href="#page-end" blocking="render" />
 	</head>
 	<body class="flex min-h-screen flex-col lg:block">
 
@@ -58,7 +60,7 @@
 			<button type="button" class="hamburger relative flex size-[50px] items-center justify-center rounded-[10px] bg-panel text-[28px] leading-none text-white md:hidden" aria-label="Menu" aria-expanded="false" aria-controls="site-menu">&#9776;</button>
 			<ul id="site-menu" class="invisible absolute inset-x-0 top-full flex max-h-0 flex-col overflow-hidden bg-panel p-[5px] opacity-0 transition-[max-height,opacity,visibility] duration-300 ease-out group-data-open:visible group-data-open:max-h-[500px] group-data-open:opacity-100 md:visible md:static md:h-full md:max-h-none md:w-full md:flex-row md:bg-transparent md:opacity-100">
 				<li class="flex items-center justify-center pl-2 md:flex-1"><a href="index.html" class="tab">Home</a></li>
-				<li class="flex items-center justify-center pl-2 md:flex-1"><a href="about.html" class="tab" aria-current="page">About</a></li>
+				<li class="flex items-center justify-center pl-2 md:flex-1"><a href="about.html" class="tab" aria-current="page">About<span class="tab-indicator" aria-hidden="true"></span></a></li>
 				<li class="flex items-center justify-center pl-2 md:flex-1"><a href="portfolio.html" class="tab">Portfolio</a></li>
 				<li class="flex items-center justify-center pl-2 md:flex-1"><a href="services.html" class="tab">Services</a></li>
 				<li class="flex items-center justify-center pl-2 md:flex-1"><a href="contact.html" class="tab">Contact</a></li>
@@ -119,5 +121,6 @@
 		</footer>
 
 		<script src="assets/js/site.js"></script>
+		<div id="page-end" hidden></div>
 	</body>
 </html>

@@ -24,6 +24,8 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@0;1&amp;display=swap" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 		<link rel="stylesheet" href="assets/css/site.css" />
+		<!-- Hold the first paint until the whole page (scripts included) is parsed, so page transitions snapshot a finished page -->
+		<link rel="expect" href="#page-end" blocking="render" />
 	</head>
 	<body class="flex min-h-screen flex-col lg:block">
 
@@ -61,7 +63,7 @@
 				<li class="flex items-center justify-center pl-2 md:flex-1"><a href="about.html" class="tab">About</a></li>
 				<li class="flex items-center justify-center pl-2 md:flex-1"><a href="portfolio.html" class="tab">Portfolio</a></li>
 				<li class="flex items-center justify-center pl-2 md:flex-1"><a href="services.html" class="tab">Services</a></li>
-				<li class="flex items-center justify-center pl-2 md:flex-1"><a href="contact.html" class="tab" aria-current="page">Contact</a></li>
+				<li class="flex items-center justify-center pl-2 md:flex-1"><a href="contact.html" class="tab" aria-current="page">Contact<span class="tab-indicator" aria-hidden="true"></span></a></li>
 			</ul>
 		</nav>
 
@@ -112,5 +114,6 @@
 		</footer>
 
 		<script src="assets/js/site.js"></script>
+		<div id="page-end" hidden></div>
 	</body>
 </html>

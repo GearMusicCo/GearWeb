@@ -136,7 +136,10 @@
 	var $ = window.jQuery;
 	if (!$) return;
 
-	$(function () {
+	// Runs right away rather than in $(fn): this script is last in <body>, so the
+	// markup already exists, and jQuery 3 runs ready callbacks late (async),
+	// which let the page paint its unstyled carousels first.
+	var initPlugins = function () {
 		if ($.fn.magnificPopup) {
 			$('.popup-youtube').magnificPopup({
 				type: 'iframe',
@@ -190,5 +193,6 @@
 				]
 			});
 		}
-	});
+	};
+	initPlugins();
 })();

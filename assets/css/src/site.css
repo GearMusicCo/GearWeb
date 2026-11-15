@@ -124,7 +124,13 @@
 
 	/* Navigation link: tab bar on desktop, dropdown row on phones */
 	.tab {
-		@apply block w-full rounded-[5px] border-b border-dotted border-white bg-panel py-2.5 text-center text-[18px] font-bold text-white transition-colors duration-300 hover:bg-[#4a3b30];
+		@apply relative block w-full rounded-[5px] border-b border-dotted border-white bg-panel py-2.5 text-center text-[18px] font-bold text-white transition-colors duration-300 hover:bg-[#4a3b30];
+	}
+	/* Brass underline on the current page's tab (tab bar only). It glides to the
+		new tab during page transitions; see the view-transition rules at the end. */
+	.tab-indicator {
+		@apply absolute inset-x-1/4 bottom-1 h-[3px] rounded-full bg-accent max-md:hidden;
+		view-transition-name: tab-indicator;
 	}
 
 	.field {
@@ -190,4 +196,49 @@
 		background-color: rgb(220 0 0 / 0.88);
 		transform: translate(-50%, -50%) scale(1.15);
 	}
+}
+
+/* ---- Page transitions ("fade and rise") --------------------------------
+	Cross-document view transitions: the browser animates between two pages of
+	this site with no JavaScript. Browsers without support switch instantly, as
+	before. Only #main and the tab underline move; the sidebar, tab bar and
+	footer are the same on every page, so they stay still. */
+@media (prefers-reduced-motion: no-preference) {
+	@view-transition {
+		navigation: auto;
+	}
+}
+
+#main {
+	view-transition-name: main;
+}
+
+/* The rest of the page: a quick crossfade (only the bits that differ show it) */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: 250ms;
+}
+
+/* Content: the old page fades out, then the new one fades in rising 12px */
+::view-transition-group(main) {
+	animation: none;
+}
+::view-transition-old(main) {
+	animation: page-fade-out 160ms ease-in both;
+}
+::view-transition-new(main) {
+	animation: page-rise 320ms cubic-bezier(0.2, 0.7, 0.2, 1) 100ms both;
+}
+
+/* Tab underline slides from the old tab to the new one */
+::view-transition-group(tab-indicator) {
+	animation-duration: 350ms;
+	animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@keyframes page-fade-out {
+	to { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes page-rise {
+	from { opacity: 0; transform: translateY(12px); }
 }

@@ -12,6 +12,8 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital@0;1&amp;display=swap" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 		<link rel="stylesheet" href="assets/css/site.css" />
+		<!-- Hold the first paint until the whole page (scripts included) is parsed, so page transitions snapshot a finished page -->
+		<link rel="expect" href="#page-end" blocking="render" />
 	</head>
 	<body class="flex min-h-screen flex-col lg:block">
 
@@ -86,5 +88,6 @@
 		</footer>
 
 		<script src="assets/js/site.js"></script>
+		<div id="page-end" hidden></div>
 	</body>
 </html>
