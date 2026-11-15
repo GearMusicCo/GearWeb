@@ -32,7 +32,7 @@ Each page is a single file that works on desktop and on phones. The layout chang
 |---|---|
 | 1024px and wider | Fixed sidebar on the left with tabs and content on the right |
 | 768–1023px | The sidebar becomes a banner at the top, followed by the tabs and content |
-| Under 768px | Hamburger menu and stacked content |
+| Under 768px | Hamburger menu; home shows the banner and lesson promo, while other pages show a short photo banner and stacked content |
 
 ## Running locally on Windows with VS Code
 
@@ -47,10 +47,8 @@ Each page is a single file that works on desktop and on phones. The layout chang
    code .
    ```
 
-3. Install these VS Code extensions (Extensions panel, `Ctrl+Shift+X`):
-   - **Live Server** (`ritwickdey.LiveServer`): serves the site locally and reloads the browser when you save.
-   - **Tailwind CSS IntelliSense** (`bradlc.vscode-tailwindcss`): autocompletes Tailwind class names. Optional, but recommended.
-4. Download the Tailwind CLI. It's a single `.exe` and doesn't need Node.js. Open a terminal in VS Code (`` Ctrl+` ``) and run:
+3. Install [Python](https://www.python.org/downloads/windows/) to serve the site locally. The **Tailwind CSS IntelliSense** VS Code extension (`bradlc.vscode-tailwindcss`) is optional but recommended for class-name autocomplete.
+4. To change styles, download the Tailwind CLI. It's a single `.exe` and doesn't need Node.js. Open a terminal in VS Code (`` Ctrl+` ``) at the repo root (`GearWeb`, not `GearWeb\tools`) and run:
 
    ```powershell
    New-Item -ItemType Directory -Force tools | Out-Null
@@ -61,33 +59,31 @@ Each page is a single file that works on desktop and on phones. The layout chang
 
 ### 2. Start the site
 
-**Option A: Live Server (recommended)**
-
-Right-click `index.html` in the Explorer panel and choose **Open with Live Server**, or click **Go Live** in the status bar at the bottom right. The site opens at <http://127.0.0.1:5500> and reloads whenever you save a file.
-
-**Option B: Python**
-
-If Python is installed, run this from the repo root in the VS Code terminal:
+Run this from the repo root in the VS Code terminal:
 
 ```powershell
 python -m http.server 8000
 ```
 
-Then open <http://localhost:8000>. Stop the server with `Ctrl+C`. If `python` opens the Microsoft Store instead, Python isn't installed; use Live Server, or install Python and try `py -m http.server 8000`.
+Then open <http://localhost:8000>. Refresh the browser after saving changes; the Python server does not reload pages automatically. Stop the server with `Ctrl+C`. If `python` opens the Microsoft Store instead, install Python or try `py -m http.server 8000` if the Python launcher is installed.
 
-> Always view the site through a local server, not by double-clicking the `.html` files (`file:///…`). Some things don't work from `file://` URLs, such as the root-relative favicon path (`/images/...`) and YouTube embeds.
+The compiled CSS is already included, so you don't need to build it just to view the site.
+
+> Always view the site through a local server, not by double-clicking the `.html` files (`file:///…`). Root-relative paths such as `/images/...` need the site to be served from the repo root.
 
 ### 3. Rebuild the CSS when you change styles
 
-Any time you add or change Tailwind classes in the HTML, or edit `assets/css/src/site.css`, rebuild `assets/css/site.css`.
+Run the commands below from the repo root (`GearWeb`), not from inside `tools`. If your terminal is already in `GearWeb\tools`, run `cd ..` first. If `.\tools\tailwindcss.exe` is still not found, download it using the one-time setup above.
 
-While working, open a **second** terminal (`+` in the terminal panel) and leave this running. It rebuilds on every save, and Live Server then reloads the page:
+Any time you add or change Tailwind classes in the HTML or `assets/js/site.js`, or edit `assets/css/src/site.css`, rebuild `assets/css/site.css`. Tailwind scans the HTML files and `assets/js/site.js`; write class names in full rather than constructing them from strings.
+
+While working, open a **second** terminal (`+` in the terminal panel) and leave this running. It rebuilds when the source files change; refresh the browser to see the changes:
 
 ```powershell
 .\tools\tailwindcss.exe -i assets/css/src/site.css -o assets/css/site.css --watch
 ```
 
-Before committing, run the minified build once:
+Before committing, stop the watcher with `Ctrl+C`, then run the minified build once:
 
 ```powershell
 .\tools\tailwindcss.exe -i assets/css/src/site.css -o assets/css/site.css --minify
@@ -95,7 +91,7 @@ Before committing, run the minified build once:
 
 Commit `assets/css/site.css` along with your changes. GitHub Pages serves it as is.
 
-### 4. Check phone layouts
+### 4. Check responsive layouts
 
 In the browser, press `F12`, then `Ctrl+Shift+M` (device toolbar). Check a phone width (about 390px), a tablet width (about 900px) and full desktop.
 
@@ -106,7 +102,7 @@ In the browser, press `F12`, then `Ctrl+Shift+M` (device toolbar). Check a phone
 - **Portfolio:** add a video or photo by copying an existing `.media-item` block in `portfolio.html`. Video thumbnails go in `images/thumbs/` and photos in `images/media_page/`. Compress images before committing.
 - **Services:** each tile's `data-*` attributes control what its inquiry form shows. They're documented at the top of the modal section in `assets/js/site.js`.
 - **Forms:** both forms post to [Formspree](https://formspree.io). Keep their hidden `_next` and `subject` inputs.
-- **New page or renamed page:** update `sitemap.xml` (including `lastmod`), and that page's canonical and Open Graph URLs.
+- **New page or renamed page:** update `sitemap.xml` (including `lastmod`), and that page's canonical and Open Graph URLs. The form redirect page, `thankyou.html`, is marked `noindex`.
 
 More detail on the code is in [`CLAUDE.md`](CLAUDE.md).
 
