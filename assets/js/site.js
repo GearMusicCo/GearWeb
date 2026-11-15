@@ -104,13 +104,32 @@
 			subject.value = 'Submission from website - Inquiry about ' + tileName + ' - ' + new Date().toLocaleString();
 
 			lastTile = tile;
+			modal.removeAttribute('data-closing');
 			modal.hidden = false;
+			document.documentElement.classList.add('overflow-hidden'); // keep the page behind still
 			form.querySelector('input:not([type="hidden"]):not(:disabled)').focus();
 		};
 
-		var closeModal = function () {
+		// Plays the fade-out (.modal[data-closing] in site.css), then hides.
+		var finishClose = function () {
 			modal.hidden = true;
+			modal.removeAttribute('data-closing');
+			document.documentElement.classList.remove('overflow-hidden');
 			if (lastTile) lastTile.focus();
+		};
+
+		var closeModal = function () {
+			if (modal.hidden || modal.hasAttribute('data-closing')) return;
+			if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+				finishClose();
+				return;
+			}
+			modal.setAttribute('data-closing', '');
+			modal.addEventListener('animationend', function onEnd(event) {
+				if (event.target !== modal) return;
+				modal.removeEventListener('animationend', onEnd);
+				finishClose();
+			});
 		};
 
 		document.querySelectorAll('.tile').forEach(function (tile) {
@@ -141,8 +160,11 @@
 	// which let the page paint its unstyled carousels first.
 	var initPlugins = function () {
 		if ($.fn.magnificPopup) {
+			// mfp-rise + removalDelay: fade-and-rise in/out (see site.css)
 			$('.popup-youtube').magnificPopup({
 				type: 'iframe',
+				mainClass: 'mfp-rise',
+				removalDelay: 200,
 				iframe: {
 					patterns: {
 						youtube: {
@@ -166,7 +188,13 @@
 				var items = links.map(function (link) { return { src: link.href }; });
 				var index = Math.max(0, links.findIndex(function (link) { return link.href === clicked; }));
 
-				$.magnificPopup.open({ items: items, type: 'image', gallery: { enabled: true } }, index);
+				$.magnificPopup.open({
+					items: items,
+					type: 'image',
+					gallery: { enabled: true },
+					mainClass: 'mfp-rise',
+					removalDelay: 200
+				}, index);
 			});
 		}
 
