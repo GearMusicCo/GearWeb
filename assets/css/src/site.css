@@ -17,16 +17,16 @@
 	--font-sans: "Source Sans Pro", Helvetica, sans-serif;
 	--font-serif: Georgia, serif;
 
-	--color-ink: #3f3a3a;      /* page background */
-	--color-panel: #524c4c;    /* cards, tab bar, menu */
-	--color-sidebar: #1f1815;  /* sidebar base under the sheet-music image */
-	--color-body: #a2a2a2;     /* body text */
-	--color-heading: #787878;  /* headings, button text */
-	--color-soft: #b2b2b2;     /* placeholders, icons */
-	--color-tile: #dddddd;     /* service tile text and border */
-	--color-field: #f7f7f7;    /* form field background */
-	--color-line: #efefef;     /* button border */
-	--color-accent: #49bf9d;   /* hover / focus green */
+	--color-ink: #2a211b;      /* page background (espresso) */
+	--color-panel: #3a2e25;    /* cards, tab bar, menu */
+	--color-sidebar: #17110d;  /* sidebar base under the sheet-music image */
+	--color-body: #cbb99d;     /* body text (parchment) */
+	--color-heading: #ead9bb;  /* headings, button text */
+	--color-soft: #9a8770;     /* placeholders, icons */
+	--color-tile: #d9c5a3;     /* service tile text and border */
+	--color-field: #efe5d3;    /* form field background */
+	--color-line: #d9c5a3;     /* button border */
+	--color-accent: #c9a15f;   /* hover / focus (brass) */
 
 	--animate-shake: shake 0.35s ease-in-out;
 	--animate-float-up: float-up 1s ease-out forwards;
@@ -69,10 +69,11 @@
 	/* Sheet-music background used by the sidebar header and the footer */
 	.bg-notes {
 		background-color: var(--color-sidebar);
-		background-image: url("../../images/overlay.png"), url("../../images/bg3.jpg");
-		background-repeat: repeat, no-repeat;
-		background-size: auto, cover;
-		background-position: top left, center;
+		/* The warm gradient on top tints the cool grey photo toward espresso */
+		background-image: linear-gradient(rgb(74 48 26 / 0.5), rgb(23 17 13 / 0.6)), url("../../images/overlay.png"), url("../../images/bg3.jpg");
+		background-repeat: no-repeat, repeat, no-repeat;
+		background-size: cover, auto, cover;
+		background-position: center, top left, center;
 	}
 
 	/* Short photo banner shown above the content on phones (every page except home) */
@@ -95,20 +96,73 @@
 
 	/* Dark rounded card with serif text (home text, about text, home carousel) */
 	.panel {
-		@apply rounded-xl bg-panel font-serif leading-[1.7] tracking-[0.3px] text-[#f5f5f5] shadow-[0_0_20px_rgba(0,0,0,0.3)];
+		@apply rounded-xl bg-panel font-serif leading-[1.7] tracking-[0.3px] text-[#f3ebdd] shadow-[0_0_20px_rgba(0,0,0,0.3)];
 	}
 
+	/* Page title: plain-label eyebrow, serif title, music-note flourish underneath.
+		Markup: <h1 class="section-title"><span class="eyebrow">About</span>Creative Title</h1> */
 	.section-title {
-		@apply mb-8 pt-8 pb-[0.2em] text-center text-[2rem] leading-[1.5] text-white [text-shadow:1px_1px_2px_gray] md:pt-0 md:pb-0 md:text-[2.5rem] md:text-heading;
+		@apply mb-8 pt-8 pb-[0.2em] text-center font-serif text-[2rem] leading-[1.3] tracking-[0.5px] text-white [text-shadow:1px_2px_4px_rgba(0,0,0,0.6)] md:pt-[50px] md:pb-0 md:text-[2.5rem];
+	}
+	.section-title::after {
+		content: "♪";
+		@apply mx-auto mt-3 block w-40 text-[1.25rem] leading-none text-accent;
+		text-shadow: none;
+		background: linear-gradient(to right, transparent, var(--color-accent) 30%, transparent 40%, transparent 60%, var(--color-accent) 70%, transparent) center / 100% 1px no-repeat;
+	}
+	.eyebrow {
+		@apply mb-2 block font-sans text-[0.8rem] font-bold tracking-[0.3em] text-accent uppercase [text-shadow:none] md:text-[0.9rem];
+	}
+
+	/* Sub-heading inside a page (portfolio Videos / Photos) */
+	.subsection-title {
+		@apply mb-[1em] font-serif text-[1.4em] leading-[1.3] text-white md:mb-4 md:border-l-4 md:border-accent md:pl-3 md:text-[1.75rem];
+	}
+	.subsection-title .eyebrow {
+		@apply mb-1 text-[0.7rem] md:text-[0.75rem];
 	}
 
 	/* Navigation link: tab bar on desktop, dropdown row on phones */
 	.tab {
-		@apply block w-full rounded-[5px] border-b border-dotted border-white bg-panel py-2.5 text-center text-[18px] font-bold text-white transition-colors duration-300 hover:bg-[#555];
+		@apply relative block w-full rounded-[5px] border-b border-dotted border-white bg-panel py-2.5 text-center text-[18px] font-bold text-white transition-colors duration-300 hover:bg-[#4a3b30];
+	}
+	/* Tablet and desktop (md and up): "concert programme" nav. Italic serif links
+		separated by brass notes; the current page is upright and white with a brass
+		dot (.tab-indicator) beneath. Phones keep the dropdown rows above. */
+	@variant md {
+		.tab {
+			@apply w-auto rounded-none border-0 bg-transparent px-0.5 pt-1 pb-3 font-serif text-[1.15rem] font-normal text-body italic;
+		}
+		.tab:hover {
+			@apply bg-transparent text-heading;
+		}
+		.tab[aria-current="page"] {
+			@apply text-white not-italic;
+		}
+		#site-menu > li + li::before {
+			content: "♪";
+			@apply mx-3 text-[1rem] leading-none text-accent/55;
+		}
+	}
+	@variant lg {
+		.tab {
+			@apply text-[1.2rem];
+		}
+		#site-menu > li + li::before {
+			@apply mx-[18px];
+		}
+	}
+
+	/* Brass dot under the current page's link (tab bar only; hidden on phones).
+		It glides to the new link during page transitions; see the view-transition
+		rules at the end. */
+	.tab-indicator {
+		@apply absolute bottom-0.5 left-1/2 size-1.5 -translate-x-1/2 rounded-full bg-accent max-md:hidden;
+		view-transition-name: tab-indicator;
 	}
 
 	.field {
-		@apply block h-[2.75em] w-full appearance-none rounded-[0.35em] border-2 border-transparent bg-field px-[0.75em] text-inherit outline-0 focus:border-accent;
+		@apply block h-[2.75em] w-full appearance-none rounded-[0.35em] border-2 border-transparent bg-field px-[0.75em] text-ink outline-0 focus:border-accent;
 	}
 	textarea.field {
 		@apply h-auto p-[0.75em];
@@ -119,8 +173,8 @@
 		background-size: 70%;
 	}
 	.checkbox:checked {
-		@apply border-heading bg-heading;
-		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' d='M3 8.5l3.2 3.2L13 4.8'/%3E%3C/svg%3E");
+		@apply border-accent bg-accent;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%232a211b' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' d='M3 8.5l3.2 3.2L13 4.8'/%3E%3C/svg%3E");
 	}
 
 	/* Service tile; site.js opens the inquiry modal from these */
@@ -130,7 +184,7 @@
 
 	/* Portfolio carousel card (videos and photos) */
 	.media-item {
-		@apply overflow-hidden rounded-lg bg-[#2f2a2a] p-2 text-center text-white shadow-[0_2px_5px_rgba(0,0,0,0.5)] transition-transform duration-300 ease-in-out md:mx-2.5 md:overflow-visible md:rounded-2xl md:bg-panel md:p-4 md:shadow-[0_4px_8px_rgba(0,0,0,0.1)] md:hover:-translate-y-[5px];
+		@apply overflow-hidden rounded-lg bg-[#221a15] p-2 text-center text-white shadow-[0_2px_5px_rgba(0,0,0,0.5)] transition-transform duration-300 ease-in-out md:mx-2.5 md:overflow-visible md:rounded-2xl md:bg-panel md:p-4 md:shadow-[0_4px_8px_rgba(0,0,0,0.1)] md:hover:-translate-y-[5px];
 	}
 	.media-item img {
 		@apply mb-2 block h-auto w-full rounded object-cover md:mx-auto md:mb-0 md:h-[300px] md:w-[95%] md:rounded-lg;
@@ -170,4 +224,120 @@
 		background-color: rgb(220 0 0 / 0.88);
 		transform: translate(-50%, -50%) scale(1.15);
 	}
+}
+
+/* ---- Page transitions ("fade and rise") --------------------------------
+	Cross-document view transitions: the browser animates between two pages of
+	this site with no JavaScript. Browsers without support switch instantly, as
+	before. Only #main and the tab underline move; the sidebar, tab bar and
+	footer are the same on every page, so they stay still. */
+@media (prefers-reduced-motion: no-preference) {
+	@view-transition {
+		navigation: auto;
+	}
+}
+
+#main {
+	view-transition-name: main;
+}
+
+/* The rest of the page: a quick crossfade (only the bits that differ show it) */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: 250ms;
+}
+
+/* Content: the old page fades out, then the new one fades in rising 12px */
+::view-transition-group(main) {
+	animation: none;
+}
+::view-transition-old(main) {
+	animation: page-fade-out 160ms ease-in both;
+}
+::view-transition-new(main) {
+	animation: page-rise 320ms cubic-bezier(0.2, 0.7, 0.2, 1) 100ms both;
+}
+
+/* Tab underline slides from the old tab to the new one */
+::view-transition-group(tab-indicator) {
+	animation-duration: 350ms;
+	animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@keyframes page-fade-out {
+	to { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes page-rise {
+	from { opacity: 0; transform: translateY(12px); }
+}
+
+/* ---- Dialog transitions (same fade and rise as the pages) ---------------
+	Services inquiry modal: site.js sets [data-closing] and hides the modal when
+	the fade-out ends. */
+.modal {
+	animation: dialog-fade-in 200ms ease-out both;
+}
+.modal > .modal-panel {
+	animation: page-rise 320ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.modal[data-closing] {
+	animation: dialog-fade-out 180ms ease-in both;
+}
+.modal[data-closing] > .modal-panel {
+	animation: page-fade-out 180ms ease-in both;
+}
+
+/* Magnific Popup lightboxes (videos, photos), opened with mainClass "mfp-rise"
+	and removalDelay 200. Unlayered, like Magnific's own CSS, so these win. */
+.mfp-rise.mfp-bg {
+	opacity: 0;
+	transition: opacity 200ms ease-out;
+}
+.mfp-rise.mfp-bg.mfp-ready {
+	opacity: 0.85;
+}
+.mfp-rise.mfp-bg.mfp-removing {
+	opacity: 0;
+}
+.mfp-rise.mfp-wrap .mfp-content {
+	opacity: 0;
+	transform: translateY(12px);
+	transition: opacity 300ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 300ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.mfp-rise.mfp-wrap.mfp-ready .mfp-content {
+	opacity: 1;
+	transform: none;
+}
+.mfp-rise.mfp-wrap.mfp-removing .mfp-content {
+	opacity: 0;
+	transform: translateY(-4px);
+	transition-duration: 180ms;
+	transition-timing-function: ease-in;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.modal,
+	.modal > .modal-panel,
+	.modal[data-closing],
+	.modal[data-closing] > .modal-panel {
+		animation: none;
+	}
+	.mfp-rise.mfp-bg,
+	.mfp-rise.mfp-wrap .mfp-content {
+		transition: none;
+	}
+}
+
+/* Portfolio carousel dots in brass, like the eyebrow labels. Unlayered and
+	scoped to .media-grid so it beats slick-theme's black dots. */
+.media-grid .slick-dots li button::before,
+.media-grid .slick-dots li.slick-active button::before {
+	color: var(--color-accent);
+}
+
+@keyframes dialog-fade-in {
+	from { opacity: 0; }
+}
+@keyframes dialog-fade-out {
+	to { opacity: 0; }
 }
