@@ -126,10 +126,38 @@
 	.tab {
 		@apply relative block w-full rounded-[5px] border-b border-dotted border-white bg-panel py-2.5 text-center text-[18px] font-bold text-white transition-colors duration-300 hover:bg-[#4a3b30];
 	}
-	/* Brass underline on the current page's tab (tab bar only). It glides to the
-		new tab during page transitions; see the view-transition rules at the end. */
+	/* Tablet and desktop (md and up): "concert programme" nav. Italic serif links
+		separated by brass notes; the current page is upright and white with a brass
+		dot (.tab-indicator) beneath. Phones keep the dropdown rows above. */
+	@variant md {
+		.tab {
+			@apply w-auto rounded-none border-0 bg-transparent px-0.5 pt-1 pb-3 font-serif text-[1.15rem] font-normal text-body italic;
+		}
+		.tab:hover {
+			@apply bg-transparent text-heading;
+		}
+		.tab[aria-current="page"] {
+			@apply text-white not-italic;
+		}
+		#site-menu > li + li::before {
+			content: "♪";
+			@apply mx-3 text-[1rem] leading-none text-accent/55;
+		}
+	}
+	@variant lg {
+		.tab {
+			@apply text-[1.2rem];
+		}
+		#site-menu > li + li::before {
+			@apply mx-[18px];
+		}
+	}
+
+	/* Brass dot under the current page's link (tab bar only; hidden on phones).
+		It glides to the new link during page transitions; see the view-transition
+		rules at the end. */
 	.tab-indicator {
-		@apply absolute inset-x-1/4 bottom-1 h-[3px] rounded-full bg-accent max-md:hidden;
+		@apply absolute bottom-0.5 left-1/2 size-1.5 -translate-x-1/2 rounded-full bg-accent max-md:hidden;
 		view-transition-name: tab-indicator;
 	}
 
@@ -298,6 +326,13 @@
 	.mfp-rise.mfp-wrap .mfp-content {
 		transition: none;
 	}
+}
+
+/* Portfolio carousel dots in brass, like the eyebrow labels. Unlayered and
+	scoped to .media-grid so it beats slick-theme's black dots. */
+.media-grid .slick-dots li button::before,
+.media-grid .slick-dots li.slick-active button::before {
+	color: var(--color-accent);
 }
 
 @keyframes dialog-fade-in {
